@@ -1,0 +1,7 @@
+#send-btn:hover {
+    -fx-background-color: #CC0000;
+}
+
+#msgPane{
+    -fx-background-color: white;
+}

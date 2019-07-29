@@ -27,6 +27,7 @@ public class TextBox implements EventHandler<ActionEvent> {
         send = new Button();
         send.setText("Send");
         send.setOnAction(this);
+        send.setId("send-btn");
 
         type = new TextField();
         type.setOnAction(this);
@@ -45,14 +46,18 @@ public class TextBox implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
         if(event.getSource()==send || event.getSource()==type){
-            System.out.println("SEND button clicked !");
+            //We check if the textfield contains something before sending
+                //This allows avoiding sending an empty message
+            if(type.getCharacters().length() > 0) {
+                System.out.println("SEND button clicked !");
 
-            String content = type.getCharacters().toString();
-            //Todo : send text to server
-            sendMessage(content);
+                String content = type.getCharacters().toString();
+                //Todo : send text to server
+                sendMessage(content);
 
-            type.setText("");
-            System.out.println("text cleared !");
+                type.setText("");
+                System.out.println("text cleared !");
+            }
         }
     }
 
