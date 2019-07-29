@@ -1,13 +1,19 @@
 package sample;
 
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 
-public class TextBox{
+public class TextBox implements EventHandler<ActionEvent> {
     String placeholder;
+    Button send;
+    TextField type;
 
     public TextBox(String placeholder) {
         this.placeholder = placeholder;
@@ -18,10 +24,13 @@ public class TextBox{
         hbox.setSpacing(10);
         hbox.setPadding(new Insets(15, 12, 15, 12));
 
-        Button send = new Button();
+        send = new Button();
         send.setText("Send");
+        send.setOnAction(this);
 
-        TextField type = new TextField();
+        type = new TextField();
+        type.setOnAction(this);
+
         hbox.setHgrow(type, Priority.ALWAYS);
         type.setPromptText(this.placeholder);
 
@@ -31,5 +40,23 @@ public class TextBox{
         hbox.setPrefHeight(80);
 
         return hbox;
+    }
+
+    @Override
+    public void handle(ActionEvent event) {
+        if(event.getSource()==send || event.getSource()==type){
+            System.out.println("SEND button clicked !");
+
+            String content = type.getCharacters().toString();
+            //Todo : send text to server
+            sendMessage(content);
+
+            type.setText("");
+            System.out.println("text cleared !");
+        }
+    }
+
+    private void sendMessage(String msg){
+        System.out.println("message " + msg + " sent");
     }
 }
