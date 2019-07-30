@@ -17,18 +17,21 @@ import javafx.stage.Stage;
 
 public class MainScene {
     BorderPane border;
+    TextBox textBox;
+    MessagePanel msg;
     HBox hbox;
 
-    public MainScene() {
+    public MainScene(TextBox textbox, MessagePanel msgPanel) {
         border = new BorderPane();
         BorderPane centerPane = new BorderPane();
 
         //CENTER SIDE
         //Input pane
-        centerPane.setBottom(new TextBox("Type your message...").addTextBox());
+        textBox = textbox;
+        centerPane.setBottom(textBox.addTextBox());
 
         //Messages pane
-        MessagePanel msg = new MessagePanel();
+        msg = msgPanel;
 
         centerPane.setCenter(msg);
 
@@ -45,5 +48,9 @@ public class MainScene {
 
     public BorderPane getBorder() {
         return border;
+    }
+
+    public TextBox getTextBox() {
+        return textBox;
     }
 }

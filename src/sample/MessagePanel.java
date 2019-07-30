@@ -1,6 +1,11 @@
 package sample;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableListBase;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -8,20 +13,17 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MessagePanel extends ScrollPane{
     private ArrayList<Message> messages;
-    VBox viewport;
+    private VBox viewport;
 
     public MessagePanel() {
         this.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         this.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
 
         messages = new ArrayList<Message>();
-
-        messages.add(new Message("usr","Hello"));
-        messages.add(new Message("usr","World"));
-        messages.add(new Message("myself","Hello "));
         this.setId("msgPane");
 
         viewport = new VBox();
@@ -31,20 +33,12 @@ public class MessagePanel extends ScrollPane{
         viewport.prefWidthProperty().bind(this.widthProperty().add(-15));
 
         this.setContent(viewport);
-
-        update();
-    }
-
-    private void update(){
         viewport.setSpacing(10);
-        for (Message msg : messages) {
-            viewport.getChildren().add(msg.getDisplayBox());
-        }
     }
 
     public void add(Message m){
         this.messages.add(m);
-        this.update();
+        viewport.getChildren().add(m.getDisplayBox());
     }
 
 

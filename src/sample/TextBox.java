@@ -10,27 +10,23 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 
-public class TextBox implements EventHandler<ActionEvent> {
+public class TextBox {
     String placeholder;
     Button send;
     TextField type;
 
     public TextBox(String placeholder) {
         this.placeholder = placeholder;
+        type = new TextField();
+        send = new Button();
+        send.setText("Send");
+        send.setId("send-btn");
     }
 
     public HBox addTextBox(){
         HBox hbox = new HBox();
         hbox.setSpacing(10);
         hbox.setPadding(new Insets(15, 12, 15, 12));
-
-        send = new Button();
-        send.setText("Send");
-        send.setOnAction(this);
-        send.setId("send-btn");
-
-        type = new TextField();
-        type.setOnAction(this);
 
         hbox.setHgrow(type, Priority.ALWAYS);
         type.setPromptText(this.placeholder);
@@ -43,25 +39,19 @@ public class TextBox implements EventHandler<ActionEvent> {
         return hbox;
     }
 
-    @Override
-    public void handle(ActionEvent event) {
-        if(event.getSource()==send || event.getSource()==type){
-            //We check if the textfield contains something before sending
-                //This allows avoiding sending an empty message
-            if(type.getCharacters().length() > 0) {
-                System.out.println("SEND button clicked !");
-
-                String content = type.getCharacters().toString();
-                //Todo : send text to server
-                sendMessage(content);
-
-                type.setText("");
-                System.out.println("text cleared !");
-            }
-        }
+    public String getPlaceholder() {
+        return placeholder;
     }
 
-    private void sendMessage(String msg){
-        System.out.println("message " + msg + " sent");
+    public Button getSend() {
+        return send;
+    }
+
+    public TextField getType() {
+        return type;
+    }
+
+    public void setPlaceholder(String placeholder) {
+        this.placeholder = placeholder;
     }
 }

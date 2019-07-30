@@ -1,6 +1,11 @@
 package sample;
 
+import Connexion.Client;
+import Connexion.NetworkConnection;
+import Connexion.Server;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,21 +20,57 @@ import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.spec.ECField;
 
 public class Main extends Application {
+    TextBox txtbox;
+    MessagePanel messagePanel;
+    MainScene ms;
+
+    private boolean isServer = false;
+    private NetworkConnection connection = isServer ? createServer(55555) : createClient("127.0.0.1",7777);
+
+
+    public void init() throws Exception {
+        connection.startConnection();
+    }
+
+    private Scene createContent(){
+        messagePanel = new MessagePanel();
+
+        txtbox = new TextBox("Type your message...");
+
+        txtbox.getSend().setOnAction(event -> {
+            if(txtbox.getType().getCharacters().length() > 0) {
+                System.out.println("SEND button clicked !");
+
+                String content = txtbox.getType().getCharacters().toString();
+                //Todo : append message boxes
+                messagePanel.add(new Message("myself", content));
+
+                try {
+                    connection.send(content);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    messagePanel.add(new Message("Server", "Sending failed"));
+                }
+
+                txtbox.getType().setText("");
+                System.out.println("text cleared !");
+            }
+        });
+
+        ms = new MainScene(txtbox, messagePanel);
+        return new Scene(ms.getBorder(),800,600);
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        //This is the window content
-
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
         //Main stage = window
         primaryStage.setTitle("Hello World");
 
-        MainScene ms = new MainScene();
-
-        Scene scene = new Scene(ms.getBorder(), 800, 600 );
+        Scene scene = createContent();
 
         String fontSheet = fileToStylesheetString( new File ("resources/style.css") );
 
@@ -41,14 +82,24 @@ public class Main extends Application {
             System.out.println("CSS File Detected, applying...");
         }
 
-        System.out.println(Paths.get(".").toAbsolutePath().normalize().toString());
-
         primaryStage.setScene(scene);
-
         primaryStage.show();
+
     }
 
-    public String fileToStylesheetString ( File stylesheetFile ) {
+    @Override
+    public void stop() throws Exception {
+        //TODO : stop the server
+        connection.closeConnection();
+        super.stop();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+
+    public String fileToStylesheetString (File stylesheetFile ) {
         try {
             return stylesheetFile.toURI().toURL().toString();
         } catch ( MalformedURLException e ) {
@@ -57,7 +108,19 @@ public class Main extends Application {
     }
 
 
-    public static void main(String[] args) {
-        launch(args);
+    private Server createServer(int port){
+        return new Server(port, data -> {
+            Platform.runLater(() -> {
+                messagePanel.add(new Message("Server",data.toString()));
+            });
+        });
+    }
+
+    private Client createClient(String ip, int port){
+        return new Client(ip, port , data ->{
+            Platform.runLater(() -> {
+                messagePanel.add(new Message("myself",data.toString()));
+            });
+        });
     }
 }
