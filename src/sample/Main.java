@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -29,7 +30,7 @@ public class Main extends Application {
     private int theme = 0;
 
     private boolean isServer = false;
-    private NetworkConnection connection = isServer ? createServer(55555) : createClient("127.0.0.1",7777);
+    private NetworkConnection connection = isServer ? createServer(7777) : createClient("127.0.0.1",7777);
 
 
     public void init() throws Exception {
@@ -87,15 +88,12 @@ public class Main extends Application {
 
         //Styling event on button press
         themeBtn.setOnAction(e -> {
-            System.out.println("Theme changed");
             if(theme == 0 ) {
                 String f = fileToStylesheetString(new File("resources/jmetro8/JMetroDarkTheme.css"));
                 scene.getStylesheets().clear();
                 setUserAgentStylesheet(null);
                 scene.getStylesheets().add( f);
                 theme = 1;
-                System.out.println("t = "+ theme);
-                themeBtn.setText("Light off ");
             }
             else if(theme == 1){
                 String a = fileToStylesheetString(new File("resources/jmetro8/JMetroLightTheme.css"));
@@ -103,12 +101,15 @@ public class Main extends Application {
                 setUserAgentStylesheet(null);
                 scene.getStylesheets().add( a);
                 theme = 0;
-                System.out.println("t = "+ theme);
-                themeBtn.setText("Light on ");
             }
 
         });
         buttonContainerTop.getChildren().add(themeBtn);
+        if(isServer)
+            buttonContainerTop.getChildren().add(new Label("(Server side)"));
+        else
+            buttonContainerTop.getChildren().add(new Label("(Client side)"));
+        buttonContainerTop.setSpacing(10);
         ms.getBorder().setTop(buttonContainerTop);
 
         primaryStage.setScene(scene);
@@ -148,7 +149,7 @@ public class Main extends Application {
     private Client createClient(String ip, int port){
         return new Client(ip, port , data ->{
             Platform.runLater(() -> {
-                messagePanel.add(new Message("myself",data.toString()));
+                messagePanel.add(new Message("Server",data.toString()));
             });
         });
     }
