@@ -15,7 +15,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.util.HashSet;
 
 import static javafx.application.Application.*;
 
@@ -39,11 +42,12 @@ public class MainScene {
 
         centerPane.setCenter(msg);
 
-        ListView<String> list = new ListView<String>();
-        ObservableList<String> items = FXCollections.observableArrayList (
-                "User1", "User1", "User2", "User3","...");
+        ListView<UsrPan> list = new ListView<UsrPan>();
+        ObservableList<UsrPan> items = FXCollections.observableArrayList (
+                new UsrPan("User1"), new UsrPan("User2"));
         list.setItems(items);
         list.setPrefWidth(160);
+        list.setFixedCellSize(50);
 
         border.setLeft( list );
         border.setCenter(centerPane);
