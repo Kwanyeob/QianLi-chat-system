@@ -26,6 +26,7 @@ public class Main extends Application {
     TextBox txtbox;
     MessagePanel messagePanel;
     MainScene ms;
+    private int theme = 0;
 
     private boolean isServer = false;
     private NetworkConnection connection = isServer ? createServer(55555) : createClient("127.0.0.1",7777);
@@ -72,7 +73,7 @@ public class Main extends Application {
 
         Scene scene = createContent();
 
-        String fontSheet = fileToStylesheetString( new File ("resources/style.css") );
+        String fontSheet = fileToStylesheetString( new File ("resources/jmetro8/JMetroLightTheme.css") );
 
         if ( fontSheet == null ) {
             //Do Whatever you want with logging/errors/etc.
@@ -81,6 +82,33 @@ public class Main extends Application {
             scene.getStylesheets().add( fontSheet );
             System.out.println("CSS File Detected, applying...");
         }
+        HBox buttonContainerTop = new HBox();
+        Button themeBtn = new Button("Light on ");
+
+        themeBtn.setOnAction(e -> {
+            System.out.println("Theme changed");
+            if(theme == 0 ) {
+                String f = fileToStylesheetString(new File("resources/jmetro8/JMetroDarkTheme.css"));
+                scene.getStylesheets().clear();
+                setUserAgentStylesheet(null);
+                scene.getStylesheets().add( f);
+                theme = 1;
+                System.out.println("t = "+ theme);
+                themeBtn.setText("Light off ");
+            }
+            else if(theme == 1){
+                String a = fileToStylesheetString(new File("resources/jmetro8/JMetroLightTheme.css"));
+                scene.getStylesheets().clear();
+                setUserAgentStylesheet(null);
+                scene.getStylesheets().add( a);
+                theme = 0;
+                System.out.println("t = "+ theme);
+                themeBtn.setText("Light on ");
+            }
+
+        });
+        buttonContainerTop.getChildren().add(themeBtn);
+        ms.getBorder().setTop(buttonContainerTop);
 
         primaryStage.setScene(scene);
         primaryStage.show();

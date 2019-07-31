@@ -4,6 +4,8 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,6 +16,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
+import static javafx.application.Application.*;
 
 public class MainScene {
     BorderPane border;
@@ -52,5 +56,9 @@ public class MainScene {
 
     public TextBox getTextBox() {
         return textBox;
+    }
+
+    public ObservableList<Node> getChildren(){
+        return border.getChildren();
     }
 }
