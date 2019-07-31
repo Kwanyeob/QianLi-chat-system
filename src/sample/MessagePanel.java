@@ -34,6 +34,7 @@ public class MessagePanel extends ScrollPane{
 
         this.setContent(viewport);
         viewport.setSpacing(10);
+        this.vvalueProperty().bind(viewport.heightProperty());
     }
 
     public void add(Message m){
