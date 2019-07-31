@@ -21,7 +21,7 @@ public class MessagePanel extends ScrollPane{
 
     public MessagePanel() {
         this.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        this.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        this.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
 
         messages = new ArrayList<Message>();
         this.setId("msgPane");
