@@ -85,6 +85,7 @@ public class Main extends Application {
         HBox buttonContainerTop = new HBox();
         Button themeBtn = new Button("Light on ");
 
+        //Styling event on button press
         themeBtn.setOnAction(e -> {
             System.out.println("Theme changed");
             if(theme == 0 ) {

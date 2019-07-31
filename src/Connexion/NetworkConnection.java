@@ -3,6 +3,7 @@ package Connexion;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.function.Consumer;
@@ -26,7 +27,13 @@ public abstract class NetworkConnection {
     }
 
     public void closeConnection() throws Exception{
-        connThread.socket.close();
+        try {
+            connThread.socket.close();
+            System.out.println("Connection closed");
+        } catch (Exception e){
+            System.out.println("Connection closed");
+        }
+
     }
 
     protected abstract boolean isServer();
