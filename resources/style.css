@@ -1,7 +1,14 @@
-#send-btn:hover {
-    -fx-background-color: #CC0000;
+
+
+.linear-grad1{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ffebcd, #008080);
 }
 
-#msgPane{
-    -fx-background-color: white;
+.list-cell:hover {
+
+}
+
+.list-cell:selected{
+    -fx-background-color: rgba(255,255,255,0.8) !important;
+    -fx-effect: dropshadow(three-pass-box, grey, 5, 0, 0, 0);
 }

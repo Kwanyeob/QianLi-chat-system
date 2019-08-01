@@ -48,6 +48,7 @@ public class MainScene {
         list.setItems(items);
         list.setPrefWidth(160);
         list.setFixedCellSize(50);
+        list.getStyleClass().add("linear-grad1");
 
         border.setLeft( list );
         border.setCenter(centerPane);

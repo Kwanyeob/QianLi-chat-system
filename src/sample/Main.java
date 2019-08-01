@@ -1,8 +1,5 @@
 package sample;
 
-import Connexion.Client;
-import Connexion.NetworkConnection;
-import Connexion.Server;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -29,12 +26,9 @@ public class Main extends Application {
     MainScene ms;
     private int theme = 0;
 
-    private boolean isServer = false;
-    private NetworkConnection connection = isServer ? createServer(7777) : createClient("127.0.0.1",7777);
-
 
     public void init() throws Exception {
-        connection.startConnection();
+        //Start connexion
     }
 
     private Scene createContent(){
@@ -47,11 +41,11 @@ public class Main extends Application {
                 System.out.println("SEND button clicked !");
 
                 String content = txtbox.getType().getCharacters().toString();
-                //Todo : append message boxes
+                //Message boxes append
                 messagePanel.add(new Message("myself", content));
 
                 try {
-                    connection.send(content);
+                    //Send message content
                 } catch (Exception e) {
                     e.printStackTrace();
                     messagePanel.add(new Message("Server", "Sending failed"));
@@ -78,9 +72,18 @@ public class Main extends Application {
 
         if ( fontSheet == null ) {
             //Do Whatever you want with logging/errors/etc.
-            System.out.println("CSS File not recognized");
+            System.out.println("base CSS File not recognized");
         } else {
             scene.getStylesheets().add( fontSheet );
+            System.out.println("CSS File Detected, applying...");
+        }
+        String styles = fileToStylesheetString( new File ("resources/style.css") );
+
+        if ( styles == null ) {
+            //Do Whatever you want with logging/errors/etc.
+            System.out.println("custom CSS File not recognized");
+        } else {
+            scene.getStylesheets().add( styles );
             System.out.println("CSS File Detected, applying...");
         }
         HBox buttonContainerTop = new HBox();
@@ -93,6 +96,7 @@ public class Main extends Application {
                 scene.getStylesheets().clear();
                 setUserAgentStylesheet(null);
                 scene.getStylesheets().add( f);
+                //scene.getStylesheets().add(styles);
                 theme = 1;
             }
             else if(theme == 1){
@@ -100,15 +104,16 @@ public class Main extends Application {
                 scene.getStylesheets().clear();
                 setUserAgentStylesheet(null);
                 scene.getStylesheets().add( a);
+                scene.getStylesheets().add(styles);
                 theme = 0;
             }
 
         });
+        //END OF GUI STYLING
+
+
         buttonContainerTop.getChildren().add(themeBtn);
-        if(isServer)
-            buttonContainerTop.getChildren().add(new Label("(Server side)"));
-        else
-            buttonContainerTop.getChildren().add(new Label("(Client side)"));
+
         buttonContainerTop.setSpacing(10);
         ms.getBorder().setTop(buttonContainerTop);
 
@@ -120,7 +125,7 @@ public class Main extends Application {
     @Override
     public void stop() throws Exception {
         //TODO : stop the server
-        connection.closeConnection();
+
         super.stop();
     }
 
@@ -138,19 +143,26 @@ public class Main extends Application {
     }
 
 
-    private Server createServer(int port){
+    private void createServer(int port){
+        /*
         return new Server(port, data -> {
             Platform.runLater(() -> {
                 messagePanel.add(new Message("Server",data.toString()));
             });
         });
+
+         */
     }
 
-    private Client createClient(String ip, int port){
+    private void createClient(String ip, int port){
+        /*
         return new Client(ip, port , data ->{
             Platform.runLater(() -> {
                 messagePanel.add(new Message("Server",data.toString()));
             });
         });
+
+         */
     }
+
 }
