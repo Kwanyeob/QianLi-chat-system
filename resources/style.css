@@ -4,11 +4,19 @@
     -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ffebcd, #008080);
 }
 
-.list-cell:hover {
-
+.msg{
+    -fx-border-radius: 25px;
+    -fx-font-smoothing-type: gray;
+    -fx-cursor: default;
 }
 
-.list-cell:selected{
-    -fx-background-color: rgba(255,255,255,0.8) !important;
-    -fx-effect: dropshadow(three-pass-box, grey, 5, 0, 0, 0);
+.msg-label, .msg-label:focused {
+    -fx-background-color: transparent ;
+    -fx-background-insets: 0px ;
 }
+
+.msg-label:hover{
+    -fx-cursor: text;
+    -fx-background-color: transparent ;
+}
+

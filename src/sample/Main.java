@@ -79,12 +79,15 @@ public class Main extends Application implements ChatCallbackAdapter {
             System.out.println("CSS File Detected, applying...");
         }
         String styles = fileToStylesheetString( new File ("resources/style.css") );
+        String darkStyle = fileToStylesheetString( new File ("resources/styleDark.css") );
+        String lightStyle = fileToStylesheetString( new File ("resources/styleLight.css") );
 
-        if ( styles == null ) {
+        if ( styles == null || darkStyle==null || lightStyle == null ) {
             //Do Whatever you want with logging/errors/etc.
-            System.out.println("custom CSS File not recognized");
+            System.out.println("custom CSS Files not recognized");
         } else {
             scene.getStylesheets().add( styles );
+            scene.getStylesheets().add( lightStyle );
             System.out.println("CSS File Detected, applying...");
         }
         HBox buttonContainerTop = new HBox();
@@ -97,7 +100,8 @@ public class Main extends Application implements ChatCallbackAdapter {
                 scene.getStylesheets().clear();
                 setUserAgentStylesheet(null);
                 scene.getStylesheets().add( f);
-                //scene.getStylesheets().add(styles);
+                scene.getStylesheets().add(styles);
+                scene.getStylesheets().add(darkStyle);
                 theme = 1;
             }
             else if(theme == 1){
@@ -106,6 +110,7 @@ public class Main extends Application implements ChatCallbackAdapter {
                 setUserAgentStylesheet(null);
                 scene.getStylesheets().add( a);
                 scene.getStylesheets().add(styles);
+                scene.getStylesheets().add(lightStyle);
                 theme = 0;
             }
 

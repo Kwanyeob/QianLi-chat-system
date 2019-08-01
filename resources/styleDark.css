@@ -1,0 +1,27 @@
+
+
+.linear-grad2{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ffebcd, #008080);
+}
+
+.list-cell:hover{
+    -fx-background-color: rgba(80,80,80,0.85) !important;
+    -fx-effect: dropshadow(three-pass-box, black, 3, 0, 0, 0);
+}
+
+.list-cell:selected{
+    -fx-background-color: rgba(80,80,80,0.9) !important;
+    -fx-effect: dropshadow(three-pass-box, black, 6, 0, 0, 0);
+}
+
+.msg-mine{
+    -fx-background-color: red;
+}
+
+.msg-else{
+    -fx-background-color: #2B2B2B;
+}
+
+.msg{
+    -fx-text-inner-color: white;
+}
