@@ -127,6 +127,7 @@ public class Main extends Application implements ChatCallbackAdapter {
     @Override
     public void stop() throws Exception {
         //TODO : stop the server
+        chat.leave();
         super.stop();
     }
 
