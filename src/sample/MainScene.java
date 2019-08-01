@@ -27,6 +27,7 @@ public class MainScene {
     TextBox textBox;
     MessagePanel msg;
     HBox hbox;
+    ObservableList<UsrPan> items;
 
     public MainScene(TextBox textbox, MessagePanel msgPanel) {
         border = new BorderPane();
@@ -43,8 +44,7 @@ public class MainScene {
         centerPane.setCenter(msg);
 
         ListView<UsrPan> list = new ListView<UsrPan>();
-        ObservableList<UsrPan> items = FXCollections.observableArrayList (
-                new UsrPan("User1"), new UsrPan("User2"));
+        items = FXCollections.observableArrayList ();
         list.setItems(items);
         list.setPrefWidth(160);
         list.setFixedCellSize(50);
@@ -65,5 +65,9 @@ public class MainScene {
 
     public ObservableList<Node> getChildren(){
         return border.getChildren();
+    }
+
+    public ObservableList<UsrPan> getUsrItems(){
+        return items;
     }
 }

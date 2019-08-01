@@ -3,6 +3,7 @@ package sample;
 import chat.*;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -19,7 +20,7 @@ public class Main extends Application implements ChatCallbackAdapter {
     TextBox txtbox;
     MessagePanel messagePanel;
     MainScene ms;
-    String nickname = "Dev2";
+    String nickname = "Dev3";
     private int theme = 0;
 
     private static final long serialVersionUID = 1580673677145725871L;
@@ -186,18 +187,25 @@ public class Main extends Application implements ChatCallbackAdapter {
                 });
             }
             // Online users display list : Used as a label
-            /*
+
             else if (event.equals("nicknames")) {
                 JSONArray names = obj.names();
-                UsrPan usr;
+                ObservableList<UsrPan> list = ms.getUsrItems();
+                list.clear();
                 for (int i=0; i < names.length(); i++) {
-                    usr = new UsrPan(names.getString(i));
-                    list.add(usr);
-                }
-                OnlineUsers.setText(str);
-            }
+                    try {
+                        String name = names.getString(i);
+                        Platform.runLater(new Runnable() {
+                            public void run() {
+                                list.add(new UsrPan(name));
+                            }
+                        });
+                    } catch (JSONException ex) {
+                        ex.printStackTrace();
+                    }
 
-             */
+                }
+            }
 
     }
 
