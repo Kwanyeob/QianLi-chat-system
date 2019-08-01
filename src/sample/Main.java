@@ -2,6 +2,7 @@ package sample;
 
 import chat.*;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -18,7 +19,7 @@ public class Main extends Application implements ChatCallbackAdapter {
     TextBox txtbox;
     MessagePanel messagePanel;
     MainScene ms;
-    String nickname = "Dev";
+    String nickname = "Dev2";
     private int theme = 0;
 
     private static final long serialVersionUID = 1580673677145725871L;
@@ -26,7 +27,7 @@ public class Main extends Application implements ChatCallbackAdapter {
 
 
     public void init() throws Exception {
-        //Start connexion
+
     }
 
     private Scene createContent(){
@@ -155,15 +156,33 @@ public class Main extends Application implements ChatCallbackAdapter {
 
     }
 
+
     @Override
     public void on(String event, JSONObject obj) {
-        try {
             if (event.equals("user message")) {
-                messagePanel.add(new Message(obj.getString("user"),obj.getString("message")));
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            messagePanel.add(new Message(obj.getString("user"),obj.getString("message")));
+                        } catch (JSONException ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                });
             }
-
             else if (event.equals("announcement")) {
-                messagePanel.add(new Message(obj.getString("user"),obj.getString("action")));
+
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            messagePanel.add(new Message(obj.getString("user"),obj.getString("action")));
+                        } catch (JSONException ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                });
             }
             // Online users display list : Used as a label
             /*
@@ -178,25 +197,29 @@ public class Main extends Application implements ChatCallbackAdapter {
             }
 
              */
-        } catch (JSONException ex) {
-            ex.printStackTrace();
-        }
+
     }
 
     @Override
     public void onMessage(String message) {
-
+        Platform.runLater(() -> {
+            messagePanel.add(new Message("Server",message));
+        });
     }
 
     @Override
     public void onMessage(JSONObject json) {
-
+        Platform.runLater(() -> {
+            messagePanel.add(new Message("Server",json.toString()));
+        });
     }
 
     @Override
     public void onConnect() {
         chat.join(nickname);
-        //messagePanel.add(new Message("Server","Info: You joined as "+nickname));
+        Platform.runLater(() -> {
+            messagePanel.add(new Message("Server","Connected: You joined as "+nickname));
+        });
     }
 
     @Override

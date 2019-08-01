@@ -7,13 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36a70865-a42e-41d6-8032-fcaa4f7bcea5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/JFX_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chat/Chat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chat/ChatCallback.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chat/ChatCallbackAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chat/ChatFrame.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFX UI/sample/Main$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JFX UI/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFX UI/sample/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
     </list>
@@ -32,14 +26,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="166" column="13" selection-start-line="166" selection-start-column="13" selection-end-line="166" selection-end-column="13" />
+            <state relative-caret-position="126">
+              <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7978#7979#0" expanded="true" />
-                <element signature="e#8056#8057#0" expanded="true" />
-                <element signature="e#8108#8109#0" expanded="true" />
-                <element signature="e#8188#8189#0" expanded="true" />
+                <element signature="e#6833#6834#0" expanded="true" />
+                <element signature="e#6965#6966#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -48,11 +40,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/chat/Chat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="28">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -72,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/chat/ChatCallback.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="177">
+              <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#391#392#0" expanded="true" />
@@ -153,6 +142,7 @@
       <find>send</find>
       <find>myself</find>
       <find>socket.io</find>
+      <find>connected</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -213,6 +203,12 @@
               <item name="QianLi-Chat-client" type="b2602c69:ProjectViewProjectNode" />
               <item name="QianLi-Chat-client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="QianLi-Chat-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="QianLi-Chat-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="chat" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="QianLi-Chat-client" type="b2602c69:ProjectViewProjectNode" />
@@ -295,12 +291,12 @@
       <workItem from="1564449001005" duration="21351000" />
       <workItem from="1564534465741" duration="17039000" />
       <workItem from="1564632050041" duration="6371000" />
-      <workItem from="1564643459352" duration="2404000" />
+      <workItem from="1564643459352" duration="3854000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60236000" />
+    <option name="totallyTimeSpent" value="61686000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1913" y="-7" width="1550" height="848" extended-state="6" />
@@ -549,6 +545,13 @@
     <entry file="file://$PROJECT_DIR$/src/chat/ChatFrame.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/Chat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/chat/ChatCallbackAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="28">
@@ -559,20 +562,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/chat/Chat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/chat/ChatCallback.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="177">
+          <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#391#392#0" expanded="true" />
@@ -583,14 +576,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="166" column="13" selection-start-line="166" selection-start-column="13" selection-end-line="166" selection-end-column="13" />
+        <state relative-caret-position="126">
+          <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7978#7979#0" expanded="true" />
-            <element signature="e#8056#8057#0" expanded="true" />
-            <element signature="e#8108#8109#0" expanded="true" />
-            <element signature="e#8188#8189#0" expanded="true" />
+            <element signature="e#6833#6834#0" expanded="true" />
+            <element signature="e#6965#6966#0" expanded="true" />
           </folding>
         </state>
       </provider>
