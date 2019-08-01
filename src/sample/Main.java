@@ -1,36 +1,28 @@
 package sample;
 
-import io.socket.IOAcknowledge;
-import io.socket.IOCallback;
-import io.socket.SocketIO;
-import io.socket.SocketIOException;
+import chat.*;
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.security.spec.ECField;
 
-public class Main extends Application {
+public class Main extends Application implements ChatCallbackAdapter {
     TextBox txtbox;
     MessagePanel messagePanel;
     MainScene ms;
+    String nickname = "Dev";
     private int theme = 0;
+
+    private static final long serialVersionUID = 1580673677145725871L;
+    private Chat chat;
 
 
     public void init() throws Exception {
@@ -52,6 +44,7 @@ public class Main extends Application {
 
                 try {
                     //Send message content
+                    chat.sendMessage(content);
                 } catch (Exception e) {
                     e.printStackTrace();
                     messagePanel.add(new Message("Server", "Sending failed"));
@@ -68,46 +61,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        SocketIO socket = new SocketIO("http://127.0.0.1:3001/");
-        socket.connect(new IOCallback() {
-            @Override
-            public void onMessage(JSONObject json, IOAcknowledge ack) {
-                try {
-                    System.out.println("Server said:" + json.toString(2));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onMessage(String data, IOAcknowledge ack) {
-                System.out.println("Server said: " + data);
-            }
-
-            @Override
-            public void onError(SocketIOException socketIOException) {
-                System.out.println("an Error occured");
-                socketIOException.printStackTrace();
-            }
-
-            @Override
-            public void onDisconnect() {
-                System.out.println("Connection terminated.");
-            }
-
-            @Override
-            public void onConnect() {
-                System.out.println("Connection established");
-            }
-
-            @Override
-            public void on(String event, IOAcknowledge ack, Object... args) {
-                System.out.println("Server triggered event '" + event + "'");
-            }
-        });
-
-        // This line is cached until the connection is establisched.
-        socket.send("Hello Server!");
 
         //Main stage = window
         primaryStage.setTitle("Hello World");
@@ -166,12 +119,13 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
+        startChat();
+
     }
 
     @Override
     public void stop() throws Exception {
         //TODO : stop the server
-
         super.stop();
     }
 
@@ -189,26 +143,69 @@ public class Main extends Application {
     }
 
 
-    private void createServer(int port){
-        /*
-        return new Server(port, data -> {
-            Platform.runLater(() -> {
-                messagePanel.add(new Message("Server",data.toString()));
-            });
-        });
 
-         */
+    public void startChat() {
+        messagePanel.add(new Message("Server","Connecting..."));
+        chat = new Chat(this);
+        chat.start();
     }
 
-    private void createClient(String ip, int port){
-        /*
-        return new Client(ip, port , data ->{
-            Platform.runLater(() -> {
-                messagePanel.add(new Message("Server",data.toString()));
-            });
-        });
+    @Override
+    public void callback(JSONArray data) throws JSONException {
 
-         */
     }
 
+    @Override
+    public void on(String event, JSONObject obj) {
+        try {
+            if (event.equals("user message")) {
+                messagePanel.add(new Message(obj.getString("user"),obj.getString("message")));
+            }
+
+            else if (event.equals("announcement")) {
+                messagePanel.add(new Message(obj.getString("user"),obj.getString("action")));
+            }
+            // Online users display list : Used as a label
+            /*
+            else if (event.equals("nicknames")) {
+                JSONArray names = obj.names();
+                UsrPan usr;
+                for (int i=0; i < names.length(); i++) {
+                    usr = new UsrPan(names.getString(i));
+                    list.add(usr);
+                }
+                OnlineUsers.setText(str);
+            }
+
+             */
+        } catch (JSONException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onMessage(String message) {
+
+    }
+
+    @Override
+    public void onMessage(JSONObject json) {
+
+    }
+
+    @Override
+    public void onConnect() {
+        chat.join(nickname);
+        //messagePanel.add(new Message("Server","Info: You joined as "+nickname));
+    }
+
+    @Override
+    public void onDisconnect() {
+        messagePanel.add(new Message("Server","Error: Disconnected."));
+    }
+
+    @Override
+    public void onConnectFailure() {
+        messagePanel.add(new Message("Server","Error: Connect failure"));
+    }
 }
