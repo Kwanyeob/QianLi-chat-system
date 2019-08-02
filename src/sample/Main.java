@@ -28,7 +28,7 @@ public class Main extends Application implements ChatCallbackAdapter {
     TextBox txtbox;
     MessagePanel messagePanel;
     MainScene ms;
-    String nickname = "Dev1";
+    String nickname = "Dev2";
     private int theme = 0;
 
     private static final long serialVersionUID = 1580673677145725871L;
@@ -73,7 +73,8 @@ public class Main extends Application implements ChatCallbackAdapter {
     public void start(Stage primaryStage) throws Exception{
 
         //Main stage = window
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("QianLiSpace Chat - Client");
+        primaryStage.getIcons().add(new Image(new FileInputStream("resources\\icon.png")));;
 
         Scene scene = createContent();
 
@@ -111,6 +112,7 @@ public class Main extends Application implements ChatCallbackAdapter {
                 scene.getStylesheets().add(styles);
                 scene.getStylesheets().add(darkStyle);
                 theme = 1;
+                themeBtn.setText("Light off");
             }
             else if(theme == 1){
                 String a = fileToStylesheetString(new File("resources/jmetro8/JMetroLightTheme.css"));
@@ -120,6 +122,7 @@ public class Main extends Application implements ChatCallbackAdapter {
                 scene.getStylesheets().add(styles);
                 scene.getStylesheets().add(lightStyle);
                 theme = 0;
+                themeBtn.setText("Light on ");
             }
 
         });

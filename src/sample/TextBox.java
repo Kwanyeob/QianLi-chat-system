@@ -14,6 +14,7 @@ public class TextBox {
     String placeholder;
     Button send;
     TextField type;
+    HBox hbox;
 
     public TextBox(String placeholder) {
         this.placeholder = placeholder;
@@ -24,7 +25,7 @@ public class TextBox {
     }
 
     public HBox addTextBox(){
-        HBox hbox = new HBox();
+        hbox = new HBox();
         hbox.setSpacing(10);
         hbox.setPadding(new Insets(15, 12, 15, 12));
 
@@ -53,5 +54,9 @@ public class TextBox {
 
     public void setPlaceholder(String placeholder) {
         this.placeholder = placeholder;
+    }
+
+    public HBox getHbox() {
+        return hbox;
     }
 }
