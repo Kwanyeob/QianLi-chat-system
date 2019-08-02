@@ -6,13 +6,17 @@ import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,7 +32,7 @@ public class Main extends Application implements ChatCallbackAdapter {
     TextBox txtbox;
     MessagePanel messagePanel;
     MainScene ms;
-    String nickname = "Dev2";
+    String nickname = "Dev1";
     private int theme = 0;
 
     private static final long serialVersionUID = 1580673677145725871L;
@@ -128,14 +132,10 @@ public class Main extends Application implements ChatCallbackAdapter {
         });
         //END OF GUI STYLING
 
-
-        buttonContainerTop.getChildren().add(themeBtn);
-
-        buttonContainerTop.setSpacing(10);
+        buttonContainerTop.setSpacing(5);
         ms.getBorder().setTop(buttonContainerTop);
 
-        //Passing FileInputStream object as a parameter
-        //TODO IMG
+        /*
         System.out.println(Paths.get("").toAbsolutePath().toString());
         FileInputStream inputstream = new FileInputStream("resources\\qianDark.png");
         Image image = new Image(inputstream,192,40,true,true);
@@ -144,6 +144,18 @@ public class Main extends Application implements ChatCallbackAdapter {
         imageView.setFitWidth(80); imageView.setFitHeight(17);
 
         buttonContainerTop.getChildren().add(imageView);
+
+         */
+
+        Button settings = new Button("Settings");
+        settings.setOnAction(e -> {
+            Platform.runLater(() -> {
+                ParamPanel pan = new ParamPanel();
+                pan.show();
+            });
+        });
+
+        buttonContainerTop.getChildren().addAll(themeBtn, settings);
 
         primaryStage.setScene(scene);
         primaryStage.show();
