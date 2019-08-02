@@ -18,10 +18,10 @@
     -fx-background-color: red;
 }
 
-.msg-else{
-    -fx-background-color: #2B2B2B;
+.msg-mine msg-label {
+    -fx-text-inner-color: white !important;
 }
 
-.msg{
-    -fx-text-inner-color: white;
+.msg-label:focused {
+    -fx-text-inner-color: white !important;
 }

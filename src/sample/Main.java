@@ -6,6 +6,8 @@ import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.json.JSONArray;
@@ -13,14 +15,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
+import java.nio.file.Paths;
 
 public class Main extends Application implements ChatCallbackAdapter {
     TextBox txtbox;
     MessagePanel messagePanel;
     MainScene ms;
-    String nickname = "Dev3";
+    String nickname = "Dev1";
     private int theme = 0;
 
     private static final long serialVersionUID = 1580673677145725871L;
@@ -123,6 +128,17 @@ public class Main extends Application implements ChatCallbackAdapter {
         buttonContainerTop.setSpacing(10);
         ms.getBorder().setTop(buttonContainerTop);
 
+        //Passing FileInputStream object as a parameter
+        //TODO IMG
+        System.out.println(Paths.get("").toAbsolutePath().toString());
+        FileInputStream inputstream = new FileInputStream("resources\\qianDark.png");
+        Image image = new Image(inputstream,192,40,true,true);
+
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(80); imageView.setFitHeight(17);
+
+        buttonContainerTop.getChildren().add(imageView);
+
         primaryStage.setScene(scene);
         primaryStage.show();
 
@@ -196,7 +212,11 @@ public class Main extends Application implements ChatCallbackAdapter {
             else if (event.equals("nicknames")) {
                 JSONArray names = obj.names();
                 ObservableList<UsrPan> list = ms.getUsrItems();
-                list.clear();
+                Platform.runLater(new Runnable() {
+                    public void run() {
+                        list.clear();
+                    }
+                });
                 for (int i=0; i < names.length(); i++) {
                     try {
                         String name = names.getString(i);

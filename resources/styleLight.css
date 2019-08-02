@@ -14,12 +14,11 @@
     -fx-effect: dropshadow(three-pass-box, grey, 6, 0, 0, 0);
 }
 
-
 .msg-mine {
     -fx-background-color: #6CB2D1;
 }
 
-.msg-mine .msg-label{
+.msg-mine msg-label{
     -fx-text-inner-color: white !important;
 }
 

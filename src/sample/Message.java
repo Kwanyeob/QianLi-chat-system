@@ -23,6 +23,7 @@ public class Message {
         else{
             box.getStyleClass().add("msg-else");
         }
+        this.box.setSpacing(10);
         this.box.setPadding(new Insets(6, 12, 8, 12));
     }
 

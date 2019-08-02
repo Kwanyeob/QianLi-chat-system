@@ -5,9 +5,12 @@
 }
 
 .msg{
-    -fx-border-radius: 25px;
-    -fx-font-smoothing-type: gray;
     -fx-cursor: default;
+
+    -fx-background-radius: 2px;
+    -fx-padding: 5px;
+
+    -fx-border-radius: 2px;
 }
 
 .msg-label, .msg-label:focused {
@@ -20,3 +23,6 @@
     -fx-background-color: transparent ;
 }
 
+.circle-icon{
+    -fx-effect: dropshadow(two-pass-box,black,2,0,1,1);
+}
