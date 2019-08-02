@@ -32,7 +32,7 @@ public class Message {
         else{
             box.getStyleClass().add("msg-else");
         }
-        this.box.setSpacing(0);
+        this.box.setSpacing(5);
         this.box.setPadding(new Insets(6, 12, 8, 12));
 
         if(content.contains("http://") || content.contains("https://")){
@@ -47,9 +47,17 @@ public class Message {
             }
             if(buffer != null){
                 String url = buffer.toString();
-                String website = url.split("//")[1];
+                String webname = url.split("//")[1];
+                if(webname.startsWith("www.")){
+                    webname = webname.substring(4);
+                }
+                String website = webname.split("/")[0];
                 Linker link = new Linker("Visit "+website,url);
-                this.box.getChildren().add(link);
+                HBox linkBox = new HBox();
+                linkBox.getChildren().add(link);
+                linkBox.setPadding(new Insets(5,5,5,5));
+                linkBox.getStyleClass().add("msg-linkbox");
+                this.box.getChildren().add(linkBox);
             }
         }
     }

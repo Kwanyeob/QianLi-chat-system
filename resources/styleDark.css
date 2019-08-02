@@ -15,7 +15,11 @@
 }
 
 .msg-mine{
-    -fx-background-color: red;
+    -fx-background-color: #5b4630;
+}
+
+.msg-else{
+    -fx-background-color:  #3F3F3F;
 }
 
 .msg-mine msg-label {
