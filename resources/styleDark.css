@@ -18,14 +18,14 @@
     -fx-background-color: #5b4630;
 }
 
+.msg-toolbar{
+    -fx-background-color: darkgrey;
+}
+
 .msg-else{
     -fx-background-color:  #3F3F3F;
 }
 
 .msg-mine msg-label {
-    -fx-text-inner-color: white !important;
-}
-
-.msg-label:focused {
     -fx-text-inner-color: white !important;
 }

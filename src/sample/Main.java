@@ -2,27 +2,11 @@ package sample;
 
 import chat.*;
 
-import com.google.common.base.Optional;
-import com.google.common.base.Splitter;
-import com.optimaize.langdetect.LanguageDetector;
-import com.optimaize.langdetect.LanguageDetectorBuilder;
-import com.optimaize.langdetect.i18n.LdLocale;
-import com.optimaize.langdetect.ngram.NgramExtractors;
-import com.optimaize.langdetect.profiles.LanguageProfile;
-import com.optimaize.langdetect.profiles.LanguageProfileReader;
-import com.optimaize.langdetect.text.CommonTextObjectFactories;
-import com.optimaize.langdetect.text.TextObject;
-import com.optimaize.langdetect.text.TextObjectFactory;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -35,18 +19,13 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
-import java.nio.file.Paths;
-import java.util.List;
 
 public class Main extends Application implements ChatCallbackAdapter {
     TextBox txtbox;
     MessagePanel messagePanel;
     MainScene ms;
-    String nickname = "Dev1";
+    String nickname = "Dev2";
     private int theme = 0;
 
     private static final long serialVersionUID = 1580673677145725871L;
@@ -186,33 +165,6 @@ public class Main extends Application implements ChatCallbackAdapter {
     }
 
     public static void main(String[] args) {
-        String content = "Bonjour comment allez vous ?";
-
-        //load all languages:
-        List<LanguageProfile> languageProfiles = null;
-        try {
-            languageProfiles = new LanguageProfileReader().readAllBuiltIn();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        //build language detector:
-        LanguageDetector languageDetector = LanguageDetectorBuilder.create(NgramExtractors.standard())
-                .withProfiles(languageProfiles)
-                .build();
-
-        //create a text object factory
-        TextObjectFactory textObjectFactory = CommonTextObjectFactories.forDetectingOnLargeText();
-
-        //query:
-        TextObject textObject = textObjectFactory.forText(content);
-        Optional<LdLocale> lang = languageDetector.detect(textObject);
-        System.out.println(languageProfiles);
-
-
-        Translator http = new Translator();
-        System.out.println(http.translate("fr","en",content));
-
         launch(args);
     }
 
@@ -246,7 +198,10 @@ public class Main extends Application implements ChatCallbackAdapter {
                     @Override
                     public void run() {
                         try {
-                            messagePanel.add(new Message(obj.getString("user"),obj.getString("message")));
+                            String msg = obj.getString("message");
+                            if(msg != null) {
+                                messagePanel.add(new Message(obj.getString("user"), msg));
+                            }
                         } catch (JSONException ex) {
                             ex.printStackTrace();
                         }

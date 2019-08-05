@@ -72,4 +72,28 @@ public class Message {
         box.setHgrow(label, Priority.SOMETIMES);
         return box;
     }
+
+    public String getContent() {
+        return content;
+    }
+
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public HBox getBox() {
+        return box;
+    }
+
+    public void setBox(HBox box) {
+        this.box = box;
+    }
 }
