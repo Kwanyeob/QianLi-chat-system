@@ -12,6 +12,9 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -54,14 +57,24 @@ public class ParamPanel{
         stage.show();
     }
 
-    public void setupLang(ArrayList<String> choices ){
+    public void setupLang(ArrayList<String> choices ) {
         ObservableList<String> list = FXCollections.observableArrayList();
-        ChoiceBox language_selector = (ChoiceBox)scene.lookup("#language_selector");
+        ChoiceBox language_selector = (ChoiceBox) scene.lookup("#language_selector");
 
-        for ( String lang : choices) {
+        for (String lang : choices) {
             list.add(lang);
         }
         language_selector.setItems(list);
+    }
+
+    public void writeFile(String filepath){
+        try {
+            FileWriter fstream = new FileWriter(filepath);
+            BufferedWriter out = new BufferedWriter(fstream);
+            out.write("yes");
+        }catch (Exception e){
+            System.out.println("Error : "+e.getMessage());
+        }
     }
 
 

@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableListBase;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -11,6 +12,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tooltip;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
@@ -61,7 +63,7 @@ public class MessagePanel extends ScrollPane{
         opt.getChildren().addAll(trslt, cpy);
 
         VBox msgbox = new VBox();
-        msgbox.getChildren().addAll(m.getDisplayBox(), opt);
+        msgbox.getChildren().add(m.getDisplayBox());
 
         //Cpy button action
         cpy.setOnAction(e ->{
@@ -93,6 +95,21 @@ public class MessagePanel extends ScrollPane{
                         }
                     }
                 });
+
+        msgbox.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if(msgbox.getChildren().size() < 2)
+                    msgbox.getChildren().add(opt);
+            }
+        });
+
+        msgbox.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                msgbox.getChildren().remove(1);
+            }
+        });
 
         this.messages.add(m);
         viewport.getChildren().add(msgbox);
