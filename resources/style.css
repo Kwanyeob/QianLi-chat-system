@@ -47,14 +47,19 @@
 .msg-optbtn{
     -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ffebcd, #008080);
     -fx-background-radius: 30;
-    -fx-border-radius-radius: 30;
+    -fx-border-radius: 30;
     -fx-font-size: 9 ;
     -fx-font-smoothing-type: gray ;
+    -fx-border-width: 2;
 }
 
 .msg-optbtn:hover{
     -fx-font-size: 9 ;
     -fx-font-smoothing-type: gray ;
+
+    -fx-border-color: white;
+    -fx-cursor: hand;
+
 }
 
 .msg-toolbar{
