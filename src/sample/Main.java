@@ -28,13 +28,27 @@ public class Main extends Application implements ChatCallbackAdapter {
     MainScene ms;
     String nickname = "Dev2";
     private int theme = 0;
+    Preferences Prefs;
+    static final String PREFS_PATH = "qianli/chat-client/prefs";
+    static final String AUTO_TRANSLATE = "auto-translate";
+    static final String LANG_SELECTED = "lang";
+    static final String LANG_DEFAULT = "en";
 
     private static final long serialVersionUID = 1580673677145725871L;
     private Chat chat;
 
 
     public void init() throws Exception {
-
+        Prefs = Preferences.userRoot().node(PREFS_PATH);
+        if (Prefs.nodeExists(AUTO_TRANSLATE)) {
+        }
+        else {
+            Prefs.putBoolean(AUTO_TRANSLATE, false);
+        }
+        if (Prefs.nodeExists(LANG_SELECTED)) { }
+        else {
+            Prefs.put(LANG_SELECTED, LANG_DEFAULT);
+        }
     }
 
     private Scene createContent(){
@@ -129,8 +143,18 @@ public class Main extends Application implements ChatCallbackAdapter {
         buttonContainerTop.setSpacing(5);
         ms.getBorder().setTop(buttonContainerTop);
 
-        /*
-        System.out.println(Paths.get("").toAbsolutePath().toString());
+        Button settings = new Button("Settings");
+        settings.setOnAction(e -> {
+            Platform.runLater(() -> {
+                String lang = Prefs.get(LANG_SELECTED,LANG_DEFAULT);
+                ParamPanel pan = new ParamPanel(lang);
+                pan.show();
+            });
+        });
+
+        buttonContainerTop.getChildren().addAll(themeBtn, settings);
+
+        //LOGO OF QIANLI
         FileInputStream inputstream = new FileInputStream("resources\\qianDark.png");
         Image image = new Image(inputstream,192,40,true,true);
 
@@ -138,20 +162,9 @@ public class Main extends Application implements ChatCallbackAdapter {
         imageView.setFitWidth(80); imageView.setFitHeight(17);
 
         buttonContainerTop.getChildren().add(imageView);
+        //END LOGO
 
-         */
 
-        Button settings = new Button("Settings");
-        settings.setOnAction(e -> {
-            Platform.runLater(() -> {
-                Preferences myLangPrefs = Preferences.userRoot().node("qianli/chat-client/prefs");
-                String lang = myLangPrefs.get("lang","en");
-                ParamPanel pan = new ParamPanel(lang);
-                pan.show();
-            });
-        });
-
-        buttonContainerTop.getChildren().addAll(themeBtn, settings);
 
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -204,6 +217,10 @@ public class Main extends Application implements ChatCallbackAdapter {
                             String msg = obj.getString("message");
                             if(msg != null) {
                                 messagePanel.add(new Message(obj.getString("user"), msg));
+
+                                if(Prefs.getBoolean(AUTO_TRANSLATE,false) == true){
+                                    messagePanel.getTrslt().fire();
+                                }
                             }
                         } catch (JSONException ex) {
                             ex.printStackTrace();

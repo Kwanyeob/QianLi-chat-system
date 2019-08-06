@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +21,13 @@ import java.util.ArrayList;
 import java.util.prefs.Preferences;
 
 public class ParamPanel{
+    static final String PREFS_PATH = "qianli/chat-client/prefs";
+    static final String AUTO_TRANSLATE = "auto-translate";
+    static final String LANG_SELECTED = "lang";
+    static final String LANG_DEFAULT = "en";
+
     Scene scene;
+    Preferences myLangPref;
     FXMLLoader fxmlLoader;
 
     Stage stage;
@@ -33,12 +40,31 @@ public class ParamPanel{
             stage.setTitle("Settings");
             scene = new Scene(root1);
             stage.setScene(scene);
-            stage.show();
+
+
+            myLangPref = Preferences.userRoot().node(PREFS_PATH);
 
             setupLang(lang);
+            //Get checkbox from fxml file
+            CheckBox checkAutolang = (CheckBox) scene.lookup("#auto_translate_check");
+            if(checkAutolang != null){
+                //set box selected depending on the preferences
+                checkAutolang.setSelected(myLangPref.getBoolean(AUTO_TRANSLATE,false));
+                //Assign action on selection change
+                checkAutolang.setOnAction(e ->{
+                    myLangPref.putBoolean(AUTO_TRANSLATE, checkAutolang.isSelected());
+                    System.out.println("Auto translation set to "+ myLangPref.getBoolean(AUTO_TRANSLATE,false));
+                });
+            }
+            else {
+                System.out.println("Checkbox not found");
+            }
+
+
+            stage.show();
 
         } catch (Exception e){
-            System.out.println("Ouvertures param impossible");
+            e.printStackTrace();
         }
     }
 
@@ -84,13 +110,12 @@ public class ParamPanel{
 
         ObservableList<String> list = FXCollections.observableArrayList();
         ChoiceBox language_selector = (ChoiceBox) scene.lookup("#language_selector");
-        
+
         Platform.runLater(() -> {
             int index = 0;
             for (int i= 0; i< langcodes.length; i++){
                 if (pref_lang.equals(langcodes[i])){
                     index = i;
-                    System.out.println("Found correspondence at index "+index);
                     break;
                 }
             }
@@ -105,9 +130,8 @@ public class ParamPanel{
             int id_chosen = language_selector.getSelectionModel().getSelectedIndex();
             String chosen = langcodes[id_chosen];
 
-            Preferences myLangPref = Preferences.userRoot().node("qianli/chat-client/prefs");
-            myLangPref.put("lang", chosen);
-            System.out.println("Prefered language set to "+chosen);
+            myLangPref.put(LANG_SELECTED, chosen);
+            System.out.println("Preferred language set to "+chosen);
         });
     }
 

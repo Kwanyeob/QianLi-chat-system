@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.prefs.Preferences;
 
 public class MessagePanel extends ScrollPane{
+    private Button trslt;
     private ArrayList<Message> messages;
     private VBox viewport;
 
@@ -57,7 +58,7 @@ public class MessagePanel extends ScrollPane{
         cpy.setTooltip(new Tooltip("Copy to clipboard"));
 
         //Translate button
-        Button trslt = new Button("\uD83C\uDF0E");
+        trslt = new Button("\uD83C\uDF0E");
         trslt.getStyleClass().add("msg-optbtn");
         trslt.setTooltip(new Tooltip("Translate"));
 
@@ -128,5 +129,7 @@ public class MessagePanel extends ScrollPane{
         viewport.getChildren().add(msgbox);
     }
 
-
+    public Button getTrslt() {
+        return trslt;
+    }
 }

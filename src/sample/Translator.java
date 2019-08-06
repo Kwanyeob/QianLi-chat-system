@@ -22,6 +22,7 @@ import javafx.application.Platform;
 import org.json.JSONArray;
 
 public class Translator {
+    public static String confrontLang;
 
     public String translate(String from, String langTo, String content)
     {
@@ -34,9 +35,15 @@ public class Translator {
                 langFrom = detectLang(content).toString();
             }catch (NullPointerException ne){
                 System.out.println("Language not detected");
-                return null;
             }
             System.out.println("My guess is: '"+langFrom+"'");
+
+            if(langFrom == null){
+                langFrom = confrontLang;
+            }
+            else{
+                confrontLang = langFrom;
+            }
         }
         Translator http = new Translator();
         String word = null;
