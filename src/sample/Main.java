@@ -20,6 +20,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.FileInputStream;
 import java.net.MalformedURLException;
+import java.util.prefs.Preferences;
 
 public class Main extends Application implements ChatCallbackAdapter {
     TextBox txtbox;
@@ -143,7 +144,9 @@ public class Main extends Application implements ChatCallbackAdapter {
         Button settings = new Button("Settings");
         settings.setOnAction(e -> {
             Platform.runLater(() -> {
-                ParamPanel pan = new ParamPanel();
+                Preferences myLangPrefs = Preferences.userRoot().node("qianli/chat-client/prefs");
+                String lang = myLangPrefs.get("lang","en");
+                ParamPanel pan = new ParamPanel(lang);
                 pan.show();
             });
         });

@@ -18,14 +18,32 @@
     -fx-background-color: #5b4630;
 }
 
-.msg-toolbar{
-    -fx-background-color: darkgrey;
-}
-
 .msg-else{
     -fx-background-color:  #3F3F3F;
 }
 
 .msg-mine msg-label {
     -fx-text-inner-color: white !important;
+}
+
+.msg-optbtn{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #44A08D, #093637);
+}
+
+.opt-failed{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #bdc3c7, #2c3e50);
+}
+
+.opt-success{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #00b09b, #96c93d);
+    -fx-cursor: default;
+}
+.opt-success:hover{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #00b09b, #96c93d);
+    -fx-border-color: green;
+}
+
+.msg-toolbar{
+    -fx-background-color: linear-gradient(from 0% 0% to 60% 0%, #434343,#252525);
+    -fx-background-radius: 0 0 10 10;
 }

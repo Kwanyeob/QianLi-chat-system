@@ -6,6 +6,7 @@ module JFX.UI {
     requires language.detector;
     requires google.api.client.repackaged.com.google.common.base;
     requires guava;
+    requires java.prefs;
 
     opens sample;
 

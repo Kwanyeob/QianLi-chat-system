@@ -20,6 +20,7 @@ import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.prefs.Preferences;
 
 public class MessagePanel extends ScrollPane{
     private ArrayList<Message> messages;
@@ -79,7 +80,13 @@ public class MessagePanel extends ScrollPane{
                     Translator http = new Translator();
                     if (m != null) {
                         String msg = m.getContent();
-                        String result = http.translate(null, "fr", msg);
+
+                        //Here i get the selected language in preferences:
+                        Preferences myLangPrefs = Preferences.userRoot().node("qianli/chat-client/prefs");
+                        String langto = myLangPrefs.get("lang","zh-CN");
+
+
+                        String result = http.translate(null, langto, msg);
                         if (result != null && result.isEmpty() == false) {
                             //display OK
                             System.out.println("Message translated, result: '" + result + "'");
@@ -90,8 +97,14 @@ public class MessagePanel extends ScrollPane{
                             int cpt = msgbox.getChildren().indexOf(m.getDisplayBox());
                             m.setContent(result);
                             msgbox.getChildren().set(cpt, NewMsg.getDisplayBox());
+                            trslt.setText(langto);
+                            trslt.getStyleClass().add("opt-success");
+
                         } else {
                             System.out.println("Translation failed...");
+                            trslt.setText(" failed ");
+                            trslt.getStyleClass().add("opt-failed");
+                            opt.getChildren().remove(opt.getChildren().indexOf(trslt));
                         }
                     }
                 });

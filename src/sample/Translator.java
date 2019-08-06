@@ -42,7 +42,6 @@ public class Translator {
         String word = null;
         try {
             word = http.callUrlAndParseResult(langFrom, langTo, content);
-            System.out.println("Inner translate : "+word);
             result = word;
         } catch (Exception e) {
             e.printStackTrace();

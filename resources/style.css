@@ -59,8 +59,21 @@
 
     -fx-border-color: white;
     -fx-cursor: hand;
-
 }
+
+.opt-failed{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #bdc3c7, #2c3e50);
+}
+
+.opt-success{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #00b09b, #96c93d);
+    -fx-cursor: default;
+}
+.opt-success:hover{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #00b09b, #96c93d);
+    -fx-border-color: green;
+}
+
 
 .msg-toolbar{
     -fx-background-color: lightgray;
