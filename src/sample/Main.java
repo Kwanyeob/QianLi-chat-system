@@ -26,7 +26,7 @@ public class Main extends Application implements ChatCallbackAdapter {
     TextBox txtbox;
     MessagePanel messagePanel;
     MainScene ms;
-    String nickname = "Dev2";
+    String nickname = "Dev1";
     private int theme = 0;
     Preferences Prefs;
     static final String PREFS_PATH = "qianli/chat-client/prefs";

@@ -1,20 +1,19 @@
 package sample;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
-import javafx.scene.paint.Color;
-
-import java.awt.*;
-import java.awt.desktop.*;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
+import javafx.scene.text.Text;
+import javafx.stage.Screen;
 
 public class Message {
     private String sender;
@@ -63,13 +62,19 @@ public class Message {
     }
 
     public HBox getDisplayBox(){
-        TextField label = new TextField();
+        TextArea label = new TextArea();
         label.setText(content);
         label.setEditable(false);
-
         label.getStyleClass().add("msg-label");
+
+        label.setPrefRowCount(label.getParagraphs().size());
+        Label hidden = new Label(getContent());
+
         box.getChildren().add( label);
         box.setHgrow(label, Priority.SOMETIMES);
+        box.setMaxWidth(500);
+
+        label.setWrapText(true);
         return box;
     }
 
