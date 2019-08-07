@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -9,6 +10,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.Tooltip;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
@@ -36,6 +38,7 @@ public class MessagePanel extends ScrollPane{
         viewport.setPadding(new Insets(15, 12, 15, 12));
 
         viewport.prefWidthProperty().bind(this.widthProperty().add(-15));
+        this.setCache(false);
 
         this.setContent(viewport);
         viewport.setSpacing(10);
@@ -46,7 +49,10 @@ public class MessagePanel extends ScrollPane{
         //Buttons container
         HBox opt = new HBox();
         opt.getStyleClass().add("msg-toolbar");
-        opt.setPadding(new Insets(5, 5, 5, 5));
+        if(m.getSender().equals("myself")){
+            opt.getStyleClass().add("tool-mine");
+        }
+        opt.setPadding(new Insets(5, 5, 5, 8));
         opt.setSpacing(5);
 
         //Copy button
@@ -124,6 +130,7 @@ public class MessagePanel extends ScrollPane{
 
         this.messages.add(m);
         viewport.getChildren().add(msgbox);
+
     }
 
     public Button getTrslt() {

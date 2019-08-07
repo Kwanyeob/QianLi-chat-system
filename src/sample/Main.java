@@ -5,6 +5,8 @@ import chat.*;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -40,15 +42,6 @@ public class Main extends Application implements ChatCallbackAdapter {
 
     public void init() throws Exception {
         Prefs = Preferences.userRoot().node(PREFS_PATH);
-        if (Prefs.nodeExists(AUTO_TRANSLATE)) {
-        }
-        else {
-            Prefs.putBoolean(AUTO_TRANSLATE, false);
-        }
-        if (Prefs.nodeExists(LANG_SELECTED)) { }
-        else {
-            Prefs.put(LANG_SELECTED, LANG_DEFAULT);
-        }
     }
 
     private Scene createContent(){
@@ -56,26 +49,32 @@ public class Main extends Application implements ChatCallbackAdapter {
 
         txtbox = new TextBox("Type your message...");
 
-        txtbox.getSend().setOnAction(event -> {
-            if(txtbox.getType().getCharacters().length() > 0) {
-                System.out.println("SEND button clicked !");
+        final EventHandler<ActionEvent> sendAction = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if(txtbox.getType().getCharacters().length() > 0) {
+                    System.out.println("SEND button clicked !");
 
-                String content = txtbox.getType().getCharacters().toString();
-                //Message boxes append
-                messagePanel.add(new Message("myself", content));
+                    String content = txtbox.getType().getCharacters().toString();
+                    //Message boxes append
+                    messagePanel.add(new Message("myself", content));
 
-                try {
-                    //Send message content
-                    chat.sendMessage(content);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    messagePanel.add(new Message("Server", "Sending failed"));
+                    try {
+                        //Send message content
+                        chat.sendMessage(content);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        messagePanel.add(new Message("Server", "Sending failed"));
+                    }
+
+                    txtbox.getType().setText("");
+                    System.out.println("text cleared !");
                 }
-
-                txtbox.getType().setText("");
-                System.out.println("text cleared !");
             }
-        });
+        };
+
+        txtbox.getSend().setOnAction(sendAction);
+        txtbox.getType().setOnAction(sendAction);
 
         ms = new MainScene(txtbox, messagePanel);
         return new Scene(ms.getBorder(),800,600);

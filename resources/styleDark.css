@@ -15,7 +15,7 @@
 }
 
 .msg-mine{
-    -fx-background-color: #5b4630;
+    -fx-background-color: #6CB2D1;
 }
 
 .msg-else{
@@ -45,5 +45,8 @@
 
 .msg-toolbar{
     -fx-background-color: linear-gradient(from 0% 0% to 60% 0%, #434343,#252525);
-    -fx-background-radius: 0 0 10 10;
+}
+
+.tool-mine{
+    -fx-background-color: linear-gradient(from 0% 0% to 60% 0%,#252525, #434343);
 }

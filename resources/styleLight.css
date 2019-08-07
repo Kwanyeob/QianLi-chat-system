@@ -28,5 +28,8 @@
 
 .msg-toolbar{
     -fx-background-color: linear-gradient(from 0% 0% to 60% 0%, #EDEDED,white);
-    -fx-background-radius: 0 0 10 10;
+}
+
+.tool-mine{
+    -fx-background-color: linear-gradient(from 0% 0% to 60% 0%, white,#EDEDED);
 }
