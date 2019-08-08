@@ -13,6 +13,7 @@
     -fx-font-size: 14;
 
     -fx-padding: 12px;
+    -fx-effect: dropshadow(three-pass-box,rgba(0,0,0,0.4),1,0,1,1);
 }
 
 .msg-else{
@@ -28,8 +29,6 @@
 .msg-linkbox{
     -fx-background-radius: 30px;
     -fx-border-radius: 30px;
-    -fx-background-color: whitesmoke;
-    -fx-effect: dropshadow(three-pass-box,black,5,0,0,1);
 }
 
 .msg-linkbox:hover{
