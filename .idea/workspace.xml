@@ -7,10 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36a70865-a42e-41d6-8032-fcaa4f7bcea5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/styleGluonLight.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/JFX_jar/JFX.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/JFX_jar/JFX.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFX UI/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFX UI/sample/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -25,17 +23,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="473">
-              <caret line="146" column="45" lean-forward="true" selection-start-line="146" selection-start-column="45" selection-end-line="146" selection-end-column="45" />
+            <state relative-caret-position="207">
+              <caret line="142" column="45" lean-forward="true" selection-start-line="142" selection-start-column="45" selection-end-line="142" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#8950#8951#0" expanded="true" />
-                <element signature="e#9010#9011#0" expanded="true" />
-                <element signature="e#9278#9279#0" expanded="true" />
-                <element signature="e#9368#9369#0" expanded="true" />
+                <element signature="e#9599#9600#0" expanded="true" />
+                <element signature="e#9659#9660#0" expanded="true" />
+                <element signature="e#9927#9928#0" expanded="true" />
+                <element signature="e#10017#10018#0" expanded="true" />
                 <element signature="e#9696#9697#0" expanded="true" />
                 <element signature="e#9774#9775#0" expanded="true" />
                 <element signature="e#9826#9827#0" expanded="true" />
@@ -46,15 +44,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/TextBox.java">
+        <entry file="file://$PROJECT_DIR$/resources/styleGluonLight.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1326#1327#0" expanded="true" />
-                <element signature="e#1353#1354#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="434">
+              <caret line="46" column="29" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -62,8 +55,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/styleGluonDark.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="3" column="83" selection-start-line="3" selection-start-column="83" selection-end-line="3" selection-end-column="83" />
+            <state relative-caret-position="347">
+              <caret line="66" column="33" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -80,17 +73,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/bootstrap3.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
+            <state relative-caret-position="-56">
               <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/MessagePanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="36" column="35" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4880#4881#0" expanded="true" />
+                <element signature="e#4908#4909#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="15" column="56" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
+            <state relative-caret-position="266">
+              <caret line="19" column="46" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -135,8 +142,8 @@
       <find>send</find>
       <find>json</find>
       <find>emit</find>
-      <find>label</find>
       <find>send-b</find>
+      <find>label</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -179,10 +186,12 @@
         <option value="$PROJECT_DIR$/resources/styleLight.css" />
         <option value="$PROJECT_DIR$/resources/styleDark.css" />
         <option value="$PROJECT_DIR$/resources/styleGluon.css" />
-        <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/TextBox.java" />
         <option value="$PROJECT_DIR$/resources/styleGluonDark.css" />
         <option value="$PROJECT_DIR$/resources/style.css" />
+        <option value="$PROJECT_DIR$/resources/stylePastel.css" />
+        <option value="$PROJECT_DIR$/resources/styleGluonLight.css" />
+        <option value="$PROJECT_DIR$/src/sample/Main.java" />
       </list>
     </option>
   </component>
@@ -314,12 +323,12 @@
       <workItem from="1565161561109" duration="347000" />
       <workItem from="1565161996239" duration="33000" />
       <workItem from="1565162324802" duration="3784000" />
-      <workItem from="1565226864835" duration="4823000" />
+      <workItem from="1565226864835" duration="6352000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="150832000" />
+    <option name="totallyTimeSpent" value="152361000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
@@ -361,8 +370,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Connexion/Client.java" />
-    <entry file="file://$PROJECT_DIR$/src/impl/jfxtras/styles/jmetro8/TextFieldSkin.java" />
     <entry file="file://$PROJECT_DIR$/src/impl/jfxtras/styles/jmetro8/TextFieldWithButtonSkin.java" />
     <entry file="file://$PROJECT_DIR$/src/impl/jfxtras/styles/jmetro8/ToggleSwitchSkin.java" />
     <entry file="file://$PROJECT_DIR$/src/impl/jfxtras/styles/jmetro8/ButtonAnimationHelper.java" />
@@ -541,18 +548,6 @@
     <entry file="file://$PROJECT_DIR$/src/chat/ChatFrame.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/MessagePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="53" column="9" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4880#4881#0" expanded="true" />
-            <element signature="e#4908#4909#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/styleDark.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
@@ -621,13 +616,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/bootstrap3.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/MainScene.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -638,30 +626,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+    <entry file="file://$PROJECT_DIR$/resources/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="146" column="45" lean-forward="true" selection-start-line="146" selection-start-column="45" selection-end-line="146" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#8950#8951#0" expanded="true" />
-            <element signature="e#9010#9011#0" expanded="true" />
-            <element signature="e#9278#9279#0" expanded="true" />
-            <element signature="e#9368#9369#0" expanded="true" />
-            <element signature="e#9696#9697#0" expanded="true" />
-            <element signature="e#9774#9775#0" expanded="true" />
-            <element signature="e#9826#9827#0" expanded="true" />
-            <element signature="e#9906#9907#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="266">
+          <caret line="19" column="46" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/jmetro8/JMetroDarkTheme.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="29" selection-start-line="29" selection-end-line="34" selection-end-column="1" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/resources/styleGluonLight.css">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/TextBox.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -675,17 +648,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/styleGluonDark.css">
+    <entry file="file://$PROJECT_DIR$/resources/jmetro8/JMetroDarkTheme.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="3" column="83" selection-start-line="3" selection-start-column="83" selection-end-line="3" selection-end-column="83" />
+        <state relative-caret-position="121">
+          <caret line="29" selection-start-line="29" selection-end-line="34" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/style.css">
+    <entry file="file://$PROJECT_DIR$/resources/bootstrap3.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="15" column="56" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
+        <state relative-caret-position="-56">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/MessagePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="36" column="35" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4880#4881#0" expanded="true" />
+            <element signature="e#4908#4909#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/styleGluonDark.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="66" column="33" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/styleGluonLight.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="46" column="29" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="142" column="45" lean-forward="true" selection-start-line="142" selection-start-column="45" selection-end-line="142" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#9599#9600#0" expanded="true" />
+            <element signature="e#9659#9660#0" expanded="true" />
+            <element signature="e#9927#9928#0" expanded="true" />
+            <element signature="e#10017#10018#0" expanded="true" />
+            <element signature="e#9696#9697#0" expanded="true" />
+            <element signature="e#9774#9775#0" expanded="true" />
+            <element signature="e#9826#9827#0" expanded="true" />
+            <element signature="e#9906#9907#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

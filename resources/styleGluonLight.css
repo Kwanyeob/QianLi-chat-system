@@ -1,0 +1,48 @@
+
+.linear-grad1{
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%,#86c5fc,#e8c3fd);
+}
+
+.list-cell:hover{
+    -fx-background-color: rgba(255,255,255,0.85) !important;
+    -fx-effect: dropshadow(three-pass-box, grey, 3, 0, 0, 0);
+}
+
+.list-cell:selected{
+    -fx-background-color: rgba(255,255,255,0.9) !important;
+    -fx-effect: dropshadow(three-pass-box, grey, 6, 0, 0, 0);
+}
+
+.msg-mine{
+    -fx-background-color: linear-gradient(to top left, #f5d961, #fe9c88);
+}
+
+.msg-mine msg-label{
+    -fx-text-inner-color: white !important;
+}
+
+.msg-else{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 20%, #9abdeb, #80f9b7);
+}
+
+.msg-toolbar{
+    -fx-background-color: linear-gradient(from 0% 0% to 60% 0%, #EDEDED,white);
+}
+
+.tool-mine{
+    -fx-background-color: linear-gradient(from 0% 0% to 60% 0%, white,#EDEDED);
+}
+
+
+.msg-else > .label {
+    text_color: black;
+}
+
+#send-btn{
+    -fx-text-fill: black;
+    -fx-background-color: #e8c3fd;
+}
+
+.text-field{
+    -fx-border-color: #e8c3fd;
+}

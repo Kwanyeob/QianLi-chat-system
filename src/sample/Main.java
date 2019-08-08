@@ -125,7 +125,29 @@ public class Main extends Application implements ChatCallbackAdapter {
                 theme = 1;
                 themeBtn.setText("Light off");
             }
+            else if(theme == 1){
+                String a = fileToStylesheetString(new File("resources/jmetro8/JMetroLightTheme.css"));
+                String btg = fileToStylesheetString(new File("resources/styleGluonLight.css"));
+                scene.getStylesheets().clear();
+                setUserAgentStylesheet(null);
+                scene.getStylesheets().add(a);
+                scene.getStylesheets().add(styles);
+                scene.getStylesheets().add(btg);
+                theme = 2;
+                themeBtn.setText("Gluon light");
+            }
             else if(theme == 2){
+                String bt = fileToStylesheetString(new File("resources/jmetro8/JMetroDarkTheme.css"));
+                String btg = fileToStylesheetString(new File("resources/styleGluonDark.css"));
+                scene.getStylesheets().clear();
+                setUserAgentStylesheet(null);
+                scene.getStylesheets().add(bt);
+                scene.getStylesheets().add(styles);
+                scene.getStylesheets().add(btg);
+                theme = 3;
+                themeBtn.setText("Gluon dark");
+            }
+            else if(theme == 3){
                 String a = fileToStylesheetString(new File("resources/jmetro8/JMetroLightTheme.css"));
                 scene.getStylesheets().clear();
                 setUserAgentStylesheet(null);
@@ -135,17 +157,7 @@ public class Main extends Application implements ChatCallbackAdapter {
                 theme = 0;
                 themeBtn.setText("Light on ");
             }
-            else if(theme == 1){
-                String bt = fileToStylesheetString(new File("resources/jmetro8/JMetroDarkTheme.css"));
-                String btg = fileToStylesheetString(new File("resources/styleGluonDark.css"));
-                scene.getStylesheets().clear();
-                setUserAgentStylesheet(null);
-                scene.getStylesheets().add(bt);
-                scene.getStylesheets().add(styles);
-                scene.getStylesheets().add(btg);
-                theme = 2;
-                themeBtn.setText("Gluon on");
-            }
+
 
         });
         //END OF GUI STYLING
