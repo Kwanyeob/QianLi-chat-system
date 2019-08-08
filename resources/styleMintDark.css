@@ -1,40 +1,31 @@
-
-
 .linear-grad1{
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(255,192,132,1), #753393);
+    -fx-background-image: url("mint.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover, auto;
+    -fx-background-position: center, center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
 }
 
 .list-cell:hover{
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 50%, #f12711, #f5af19) !important;
+    -fx-background-color: rgba(255,255,255,0.25) !important;
     -fx-effect: dropshadow(three-pass-box, black, 3, 0, 0, 0);
 }
 
 .list-cell:selected{
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #f5af19, #f12711) !important;
+    -fx-background-color: #00ae89 !important;
     -fx-effect: dropshadow(three-pass-box, black, 6, 0, 0, 0);
 }
 
 .msg-mine{
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 80%, rgba(235,67,133,1), rgba(255,192,132,1));
+    -fx-background-color: #00BA9D;
 }
 
 .msg-else{
-    -fx-background-color: linear-gradient(to top left, rgba(126,222,240,1), rgba(50,243,191,1));
+    -fx-background-color:  #3F3F3F;
 }
 
-.background{
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #0C1751, #0F1B58);
-}
-
-.root {
-    background_color: #0C1751;
-    scroll_pane_background_color: background_color;
-
-    tab_pane_background_color: #2e2e2e;
-}
-
-.msg-else > .label {
-    text_color: black;
+.msg-mine msg-label {
+    -fx-text-inner-color: white !important;
 }
 
 .msg-optbtn{
@@ -62,11 +53,19 @@
     -fx-background-color: linear-gradient(from 0% 0% to 60% 0%,#252525, #434343);
 }
 
+.root {
+    background_color: #2A2A2A;
+    scroll_pane_background_color: background_color;
+
+    tab_pane_background_color: #2e2e2e;
+}
+
+
 #send-btn{
     -fx-text-fill: white;
-    -fx-background-color: #FF397F;
+    -fx-background-color: #00ae89;
 }
 
 .text-field{
-    -fx-border-color: #FF397F;
+    -fx-border-color: #00ae89;
 }

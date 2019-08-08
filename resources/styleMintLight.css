@@ -1,0 +1,75 @@
+.linear-grad1{
+    -fx-background-image: url("mint.jpg");
+    -fx-background: rgba(255,255,255,0.5);
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover, auto;
+    -fx-background-position: center, center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+}
+
+.list-cell:hover{
+    -fx-background-color: rgba(255,255,255,0.25) !important;
+    -fx-effect: dropshadow(three-pass-box, black, 3, 0, 0, 0);
+}
+
+.list-cell:selected{
+    -fx-background-color: #00ae89 !important;
+    -fx-effect: dropshadow(three-pass-box, black, 6, 0, 0, 1);
+}
+
+.list-cell > .label{
+    -fx-text-fill: white;
+}
+
+.msg-mine{
+    -fx-background-color: #00BA9D;
+}
+
+.msg-else{
+    -fx-background-color:  #C0C8BD;
+}
+
+.msg-mine msg-label {
+    -fx-text-inner-color: white !important;
+}
+
+.msg-optbtn{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #44A08D, #093637);
+}
+
+.opt-failed{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #bdc3c7, #2c3e50);
+}
+
+.opt-success{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #00b09b, #96c93d);
+    -fx-cursor: default;
+}
+.opt-success:hover{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #00b09b, #96c93d);
+    -fx-border-color: green;
+}
+
+.msg-toolbar{
+    -fx-background-color: linear-gradient(from 0% 0% to 60% 0%, #434343,#252525);
+}
+
+.tool-mine{
+    -fx-background-color: linear-gradient(from 0% 0% to 60% 0%,#252525, #434343);
+}
+
+.root {
+    scroll_pane_background_color: background_color;
+
+    tab_pane_background_color: #2e2e2e;
+}
+
+
+#send-btn{
+    -fx-text-fill: white;
+    -fx-background-color: #00ae89;
+}
+
+.text-field{
+    -fx-border-color: #00ae89;
+}

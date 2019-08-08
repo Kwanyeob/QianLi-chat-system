@@ -1,0 +1,76 @@
+.linear-grad1{
+    -fx-background-image: url("roses.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover, auto;
+    -fx-background-position: center, center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+}
+
+.list-cell:hover{
+    -fx-background-color: rgba(255,255,255,0.25) !important;
+    -fx-effect: dropshadow(three-pass-box, black, 3, 0, 0, 0);
+}
+
+.list-cell:selected{
+    -fx-background-color: #ff80aa !important;
+    -fx-effect: dropshadow(three-pass-box, black, 6, 0, 0, 1);
+}
+
+.list-cell > .label{
+    -fx-text-fill: white;
+}
+
+
+.msg-mine{
+    -fx-background-color: #ff80aa;
+}
+
+.msg-else{
+    -fx-background-color:  #EBE5F1;
+}
+
+.msg-mine msg-label {
+    -fx-text-inner-color: white !important;
+}
+
+.msg-optbtn{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #44A08D, #093637);
+}
+
+.opt-failed{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #bdc3c7, #2c3e50);
+}
+
+.opt-success{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #00b09b, #96c93d);
+    -fx-cursor: default;
+}
+.opt-success:hover{
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #00b09b, #96c93d);
+    -fx-border-color: green;
+}
+
+
+.msg-toolbar{
+    -fx-background-color: linear-gradient(from 0% 0% to 60% 0%, #EDEDED,white);
+}
+
+.tool-mine{
+    -fx-background-color: linear-gradient(from 0% 0% to 60% 0%, white,#EDEDED);
+}
+
+.root {
+    scroll_pane_background_color: background_color;
+
+    tab_pane_background_color: #2e2e2e;
+}
+
+
+#send-btn{
+    -fx-text-fill: white;
+    -fx-background-color: #e91e63;
+}
+
+.text-field{
+    -fx-border-color: #e91e63;
+}

@@ -67,9 +67,15 @@
 
 .msg-optbtn:hover{
     -fx-font-size: 9 ;
+    -fx-background-radius: 30;
+    -fx-border-radius: 30;
 
     -fx-border-color: white;
     -fx-cursor: hand;
+}
+.msg-optbtn:selected{
+    -fx-background-radius: 30;
+    -fx-border-radius: 30;
 }
 
 .opt-failed{
@@ -123,4 +129,9 @@
 .text {
     -fx-stroke-width: 1;
     -fx-font-smoothing-type: lcd;
+}
+
+#top-btn-container > .button {
+    -fx-border-radius: 10px 10px 0px 0px;
+    -fx-background-radius: 10px 10px 0px 0px;
 }

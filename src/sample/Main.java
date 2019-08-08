@@ -80,6 +80,50 @@ public class Main extends Application implements ChatCallbackAdapter {
         return new Scene(ms.getBorder(),800,600);
     }
 
+    public void applyTheme(Scene scene,String baseStyle, String generalStyle, String style){
+        //Here we define the number of styles
+        int nbstyle = 8;
+
+        String base = fileToStylesheetString(new File(baseStyle));
+        String general = fileToStylesheetString(new File(generalStyle));
+        String personal = fileToStylesheetString(new File(style));
+
+        scene.getStylesheets().clear();
+        setUserAgentStylesheet(null);
+
+        if ( base == null ) {
+            System.out.println("base CSS File not recognized");
+        } else {
+            scene.getStylesheets().add(base);
+
+            if(general == null){
+                System.out.println("generic CSS File not recognized");
+            }
+            else{
+                scene.getStylesheets().add(general);
+
+                if(personal == null) {
+                    System.out.println("personal CSS File not recognized");
+                }
+                else{
+                    scene.getStylesheets().add(personal);
+                }
+
+                if(theme < nbstyle-1){
+                    theme++;
+                }
+                else {
+                    theme = 0;
+                }
+                System.out.println(theme);
+
+            }
+
+        }
+
+
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception{
 
@@ -89,80 +133,65 @@ public class Main extends Application implements ChatCallbackAdapter {
 
         Scene scene = createContent();
 
-        String fontSheet = fileToStylesheetString( new File ("resources/jmetro8/JMetroLightTheme.css") );
+        String baseLight = "resources/jmetro8/JMetroLightTheme.css";
+        String baseDark = "resources/jmetro8/JMetroDarkTheme.css";
 
-        if ( fontSheet == null ) {
-            //Do Whatever you want with logging/errors/etc.
-            System.out.println("base CSS File not recognized");
-        } else {
-            scene.getStylesheets().add( fontSheet );
-            System.out.println("CSS File Detected, applying...");
-        }
-        String styles = fileToStylesheetString( new File ("resources/style.css") );
-        String darkStyle = fileToStylesheetString( new File ("resources/styleDark.css") );
-        String lightStyle = fileToStylesheetString( new File ("resources/styleLight.css") );
+        String generic = "resources/style.css";
 
-        if ( styles == null || darkStyle==null || lightStyle == null ) {
-            //Do Whatever you want with logging/errors/etc.
-            System.out.println("custom CSS Files not recognized");
-        } else {
-            scene.getStylesheets().add( styles );
-            scene.getStylesheets().add( lightStyle );
-            System.out.println("CSS File Detected, applying...");
-        }
+        applyTheme(scene, baseLight, generic, "resources/styleLight.css" );
+
         HBox buttonContainerTop = new HBox();
         Button themeBtn = new Button("Light on ");
 
         //Styling event on button press
         themeBtn.setOnAction(e -> {
-            if(theme == 0 ) {
-                String f = fileToStylesheetString(new File("resources/jmetro8/JMetroDarkTheme.css"));
-                scene.getStylesheets().clear();
-                setUserAgentStylesheet(null);
-                scene.getStylesheets().add( f);
-                scene.getStylesheets().add(styles);
-                scene.getStylesheets().add(darkStyle);
-                theme = 1;
-                themeBtn.setText("Light off");
-            }
-            else if(theme == 1){
-                String a = fileToStylesheetString(new File("resources/jmetro8/JMetroLightTheme.css"));
-                String btg = fileToStylesheetString(new File("resources/styleGluonLight.css"));
-                scene.getStylesheets().clear();
-                setUserAgentStylesheet(null);
-                scene.getStylesheets().add(a);
-                scene.getStylesheets().add(styles);
-                scene.getStylesheets().add(btg);
-                theme = 2;
-                themeBtn.setText("Gluon light");
-            }
-            else if(theme == 2){
-                String bt = fileToStylesheetString(new File("resources/jmetro8/JMetroDarkTheme.css"));
-                String btg = fileToStylesheetString(new File("resources/styleGluonDark.css"));
-                scene.getStylesheets().clear();
-                setUserAgentStylesheet(null);
-                scene.getStylesheets().add(bt);
-                scene.getStylesheets().add(styles);
-                scene.getStylesheets().add(btg);
-                theme = 3;
-                themeBtn.setText("Gluon dark");
-            }
-            else if(theme == 3){
-                String a = fileToStylesheetString(new File("resources/jmetro8/JMetroLightTheme.css"));
-                scene.getStylesheets().clear();
-                setUserAgentStylesheet(null);
-                scene.getStylesheets().add( a);
-                scene.getStylesheets().add(styles);
-                scene.getStylesheets().add(lightStyle);
-                theme = 0;
-                themeBtn.setText("Light on ");
-            }
+            switch(theme){
+                case 0:
+                    //Dark theme
+                    applyTheme(scene, baseDark, generic, "resources/styleDark.css" );
+                    themeBtn.setText("Light off");
+                    break;
+                case 1:
+                    //Gluon light
+                    applyTheme(scene, baseLight, generic, "resources/styleGluonLight.css" );
+                    themeBtn.setText("Gluon light");
+                    break;
+                case 2:
+                    //Gluon dark
+                    applyTheme(scene, baseDark, generic, "resources/styleGluonDark.css" );
+                    themeBtn.setText("Gluon dark");
+                    break;
+                case 3:
+                    //Mint dark
+                    applyTheme(scene, baseDark, generic, "resources/styleMintDark.css" );
+                    themeBtn.setText("Mint Dark");
+                    break;
+                case 4:
+                    //Rose dark
+                    applyTheme(scene, baseDark, generic, "resources/styleRoseDark.css" );
+                    themeBtn.setText("Rose Dark");
+                    break;
+                case 5:
+                    //Mint light
+                    applyTheme(scene, baseLight, generic, "resources/styleMintLight.css" );
+                    themeBtn.setText("Mint Light");
+                    break;
+                case 6:
+                    //Rose light
+                    applyTheme(scene, baseLight, generic, "resources/styleRoseLight.css" );
+                    themeBtn.setText("Rose Light");
+                    break;
+                case 7:
+                    applyTheme(scene, baseLight, generic, "resources/styleLight.css" );
+                    themeBtn.setText("Light off");
+                    break;
 
-
+            }
         });
         //END OF GUI STYLING
 
         buttonContainerTop.setSpacing(5);
+        buttonContainerTop.setId("top-btn-container");
         ms.getBorder().setTop(buttonContainerTop);
 
         Button settings = new Button("Settings");
