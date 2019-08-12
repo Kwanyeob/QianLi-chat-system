@@ -61,11 +61,11 @@ public class MessagePanel extends ScrollPane{
         cpy.setTooltip(new Tooltip("Copy to clipboard"));
 
         //Translate button
-        trslt = new Button("\uD83C\uDF0E");
-        trslt.getStyleClass().add("msg-optbtn");
-        trslt.setTooltip(new Tooltip("Translate"));
+        Button trsltbtn = new Button("\uD83C\uDF0E");
+        trsltbtn.getStyleClass().add("msg-optbtn");
+        trsltbtn.setTooltip(new Tooltip("Translate"));
 
-        opt.getChildren().addAll(trslt, cpy);
+        opt.getChildren().addAll(trsltbtn, cpy);
 
         VBox msgbox = new VBox();
         msgbox.getChildren().add(m.getDisplayBox());
@@ -80,7 +80,7 @@ public class MessagePanel extends ScrollPane{
         });
 
         //Action of button Translate
-        trslt.setOnAction(e -> {
+        trsltbtn.setOnAction(e -> {
                     Translator http = new Translator();
                     if (m != null) {
                         String msg = m.getContent();
@@ -101,14 +101,14 @@ public class MessagePanel extends ScrollPane{
                             int cpt = msgbox.getChildren().indexOf(m.getDisplayBox());
                             m.setContent(result);
                             msgbox.getChildren().set(cpt, NewMsg.getDisplayBox());
-                            trslt.setText(langto);
-                            trslt.getStyleClass().add("opt-success");
+                            trsltbtn.setText(langto);
+                            trsltbtn.getStyleClass().add("opt-success");
 
                         } else {
                             System.out.println("Translation failed...");
-                            trslt.setText(" failed ");
-                            trslt.getStyleClass().add("opt-failed");
-                            opt.getChildren().remove(opt.getChildren().indexOf(trslt));
+                            trsltbtn.setText(" failed ");
+                            trsltbtn.getStyleClass().add("opt-failed");
+                            opt.getChildren().remove(opt.getChildren().indexOf(trsltbtn));
                         }
                     }
                 });
@@ -130,6 +130,7 @@ public class MessagePanel extends ScrollPane{
 
         this.messages.add(m);
         viewport.getChildren().add(msgbox);
+        trslt = trsltbtn;
 
     }
 
