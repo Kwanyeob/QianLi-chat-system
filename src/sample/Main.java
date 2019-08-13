@@ -5,6 +5,8 @@ import chat.*;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.application.Preloader;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,6 +23,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.net.MalformedURLException;
@@ -40,6 +43,11 @@ public class Main extends Application implements ChatCallbackAdapter {
     static final String AUTO_TRANSLATE = "auto-translate";
     static final String LANG_SELECTED = "lang";
     static final String LANG_DEFAULT = "en";
+
+    private boolean minimized = false;
+    private boolean focused = true;
+
+    Stage primary;
 
     Notifier notifier;
 
@@ -228,6 +236,25 @@ public class Main extends Application implements ChatCallbackAdapter {
         primaryStage.setScene(scene);
         primaryStage.show();
 
+        primaryStage.iconifiedProperty().addListener(new ChangeListener<Boolean>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Boolean> ov, Boolean t, Boolean t1) {
+                System.out.println("minimized:" + t1.booleanValue());
+                minimized = t1.booleanValue();
+            }
+        });
+
+        primaryStage.focusedProperty().addListener(new ChangeListener<Boolean>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Boolean> ov, Boolean t, Boolean t1) {
+                focused = t1.booleanValue();
+            }
+        });
+
+        primary = primaryStage;
+
         startChat();
     }
 
@@ -275,31 +302,57 @@ public class Main extends Application implements ChatCallbackAdapter {
                         try {
                             String msg = obj.getString("message");
                             if(msg != null) {
+                                //Display the message
                                 messagePanel.add(new Message(obj.getString("user"), msg));
-                                String notifyText = "";
 
-                                int limit = 16;
+                                //Notify the user
+                                if(minimized==true || focused == false) {
+                                    String notifyText = "";
+                                    int limit = 16;
+                                    if (msg.length() > limit) {
+                                        notifyText = msg.substring(0, limit) + "...";
+                                    } else {
+                                        notifyText = msg;
+                                    }
+                                    Translator t = new Translator();
+                                    String lang = Prefs.get(LANG_SELECTED, LANG_DEFAULT);
+                                    String title = t.translate("en", lang, "New message");
+                                    if (title == null) title = "New message";
+                                    if (SystemTray.isSupported()) {
+                                        notifier.display("QianLi : " + title, notifyText);
+                                        notifier.getTrayIcon().addActionListener(new ActionListener() {
+                                            @Override
+                                            public void actionPerformed(java.awt.event.ActionEvent e) {
+                                                if(focused == false) {
+                                                    Platform.runLater(new Runnable() {
+                                                        @Override
+                                                        public void run() {
+                                                            //javaFX operations should go here
+                                                            primary.toFront();
+                                                            focused = true;
+                                                        }
+                                                    });
+                                                }
+                                                if(minimized == true){
+                                                    Platform.runLater(new Runnable() {
+                                                        @Override
+                                                        public void run() {
+                                                            //javaFX operations should go here
+                                                            primary.setIconified(false);
+                                                            minimized = false;
+                                                        }
+                                                    });
+                                                }
+                                            }
+                                        });
+                                    } else {
+                                        System.err.println("System tray not supported!");
+                                    }
 
-                                if(msg.length() > limit){
-                                    notifyText = msg.substring(0,limit) + "...";
-                                }else{
-                                    notifyText = msg;
-                                }
-
-                                Translator t = new Translator();
-                                String lang = Prefs.get(LANG_SELECTED,LANG_DEFAULT);
-                                String title = t.translate("en",lang,"New message");
-                                if(title == null) title = "New message";
-
-                                if (SystemTray.isSupported()) {
-                                    notifier.display("QianLi : "+title,notifyText);
-                                } else {
-                                    System.err.println("System tray not supported!");
-                                }
-
-
-                                if(Prefs.getBoolean(AUTO_TRANSLATE,false) == true){
-                                    messagePanel.getTrslt().fire();
+                                    //Auto translation
+                                    if (Prefs.getBoolean(AUTO_TRANSLATE, false) == true) {
+                                        messagePanel.getTrslt().fire();
+                                    }
                                 }
                             }
                         } catch (JSONException ex) {

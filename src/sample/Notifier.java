@@ -55,6 +55,10 @@ public class Notifier {
 
     }
 
+    public TrayIcon getTrayIcon() {
+        return trayIcon;
+    }
+
     public void icon(String img) {
         this.img = img;
     }
