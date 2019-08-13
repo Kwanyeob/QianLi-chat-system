@@ -4,6 +4,7 @@ import chat.*;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.application.Preloader;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,10 +20,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.net.MalformedURLException;
+import java.time.Duration;
 import java.util.prefs.Preferences;
+
+import static javafx.util.Duration.seconds;
 
 public class Main extends Application implements ChatCallbackAdapter {
     TextBox txtbox;
@@ -36,12 +41,17 @@ public class Main extends Application implements ChatCallbackAdapter {
     static final String LANG_SELECTED = "lang";
     static final String LANG_DEFAULT = "en";
 
+    Notifier notifier;
+
     private static final long serialVersionUID = 1580673677145725871L;
     private Chat chat;
 
 
     public void init() throws Exception {
         Prefs = Preferences.userRoot().node(PREFS_PATH);
+
+        //Notifications.create().title("Error").text("Failed to capture the Screen!").showError();
+        notifier = new Notifier("resources/icon.png");
     }
 
     private Scene createContent(){
@@ -215,19 +225,17 @@ public class Main extends Application implements ChatCallbackAdapter {
         buttonContainerTop.getChildren().add(imageView);
         //END LOGO
 
-
-
         primaryStage.setScene(scene);
         primaryStage.show();
 
         startChat();
-
     }
 
     @Override
     public void stop() throws Exception {
         //TODO : stop the server
         chat.leave();
+        notifier.delete();
         super.stop();
     }
 
@@ -268,6 +276,27 @@ public class Main extends Application implements ChatCallbackAdapter {
                             String msg = obj.getString("message");
                             if(msg != null) {
                                 messagePanel.add(new Message(obj.getString("user"), msg));
+                                String notifyText = "";
+
+                                int limit = 16;
+
+                                if(msg.length() > limit){
+                                    notifyText = msg.substring(0,limit) + "...";
+                                }else{
+                                    notifyText = msg;
+                                }
+
+                                Translator t = new Translator();
+                                String lang = Prefs.get(LANG_SELECTED,LANG_DEFAULT);
+                                String title = t.translate("en",lang,"New message");
+                                if(title == null) title = "New message";
+
+                                if (SystemTray.isSupported()) {
+                                    notifier.display("QianLi : "+title,notifyText);
+                                } else {
+                                    System.err.println("System tray not supported!");
+                                }
+
 
                                 if(Prefs.getBoolean(AUTO_TRANSLATE,false) == true){
                                     messagePanel.getTrslt().fire();
