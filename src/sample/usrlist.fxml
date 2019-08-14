@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.media.*?>
+<?import java.net.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="301.0" prefWidth="599.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="234.0" prefWidth="136.0">
+                     <children>
+                        <ImageView preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/icons/hollow-usr-plus.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="User 1" textAlignment="CENTER">
+                           <font>
+                              <Font name="DengXian Light" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="2 minutes" textAlignment="CENTER" textFill="#6f6f6f">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="301.0" prefWidth="149.0">
+                     <children>
+                        <ImageView preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/icons/hollow-usr-plus.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="User 1" textAlignment="CENTER">
+                           <font>
+                              <Font name="DengXian Light" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="3 minutes" textAlignment="CENTER" textFill="#6f6f6f">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Selected" textAlignment="CENTER" textFill="#00c60a">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="234.0" prefWidth="136.0" style="-fx-background-color: ;">
+                     <children>
+                        <ImageView preserveRatio="true">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <image>
+                              <Image url="@../../resources/icons/hollow-usr-plus.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="User 1" textAlignment="CENTER">
+                           <font>
+                              <Font name="DengXian Light" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="2 minutes" textAlignment="CENTER" textFill="#6f6f6f">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </FlowPane>
+   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #0D67D6;" styleClass="linear-grad1" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Pending users" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="DengXian Regular" size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

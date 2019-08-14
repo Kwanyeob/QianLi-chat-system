@@ -7,6 +7,7 @@ import javafx.application.Platform;
 import javafx.application.Preloader;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -37,6 +38,7 @@ public class Main extends Application implements ChatCallbackAdapter {
     MessagePanel messagePanel;
     MainScene ms;
     String nickname = "Dev1";
+    String room = "2";
     private int theme = 0;
     Preferences Prefs;
     static final String PREFS_PATH = "qianli/chat-client/prefs";
@@ -48,11 +50,10 @@ public class Main extends Application implements ChatCallbackAdapter {
     private boolean focused = true;
 
     Stage primary;
-
-    Notifier notifier;
+    private Chat chat;
+    private Notifier notifier;
 
     private static final long serialVersionUID = 1580673677145725871L;
-    private Chat chat;
 
 
     public void init() throws Exception {
@@ -164,44 +165,44 @@ public class Main extends Application implements ChatCallbackAdapter {
         //Styling event on button press
         themeBtn.setOnAction(e -> {
             switch(theme){
-                case 0:
+                case 1:
                     //Dark theme
                     applyTheme(scene, baseDark, generic, "resources/styleDark.css" );
                     themeBtn.setText("Light off");
                     break;
-                case 1:
+                case 2:
                     //Gluon light
                     applyTheme(scene, baseLight, generic, "resources/styleGluonLight.css" );
                     themeBtn.setText("Gluon light");
                     break;
-                case 2:
+                case 3:
                     //Gluon dark
                     applyTheme(scene, baseDark, generic, "resources/styleGluonDark.css" );
                     themeBtn.setText("Gluon dark");
                     break;
-                case 3:
+                case 4:
                     //Mint dark
                     applyTheme(scene, baseDark, generic, "resources/styleMintDark.css" );
                     themeBtn.setText("Mint Dark");
                     break;
-                case 4:
+                case 5:
                     //Rose dark
                     applyTheme(scene, baseDark, generic, "resources/styleRoseDark.css" );
                     themeBtn.setText("Rose Dark");
                     break;
-                case 5:
+                case 6:
                     //Mint light
                     applyTheme(scene, baseLight, generic, "resources/styleMintLight.css" );
                     themeBtn.setText("Mint Light");
                     break;
-                case 6:
+                case 7:
                     //Rose light
                     applyTheme(scene, baseLight, generic, "resources/styleRoseLight.css" );
                     themeBtn.setText("Rose Light");
                     break;
-                case 7:
+                case 0:
                     applyTheme(scene, baseLight, generic, "resources/styleLight.css" );
-                    themeBtn.setText("Light off");
+                    themeBtn.setText("Light on");
                     break;
 
             }
@@ -255,13 +256,23 @@ public class Main extends Application implements ChatCallbackAdapter {
 
         primary = primaryStage;
 
-        startChat();
+        //startChat();
+        ms.getUsrItems().addListener(new ListChangeListener<UsrPan>() {
+            @Override
+            public void onChanged(Change<? extends UsrPan> change) {
+                if(chat == null){
+                    startChat();
+                }
+            }
+        });
     }
 
     @Override
     public void stop() throws Exception {
-        //TODO : stop the server
-        chat.leave();
+        //Event on window close
+        if(chat != null) {
+            chat.leave();
+        }
         notifier.delete();
         super.stop();
     }
@@ -374,8 +385,9 @@ public class Main extends Application implements ChatCallbackAdapter {
                     }
                 });
             }
-            // Online users display list : Used as a label
 
+            // Online users display list : Used as a label
+            /*
             else if (event.equals("nicknames")) {
                 JSONArray names = obj.names();
                 ObservableList<UsrPan> list = ms.getUsrItems();
@@ -399,6 +411,8 @@ public class Main extends Application implements ChatCallbackAdapter {
                 }
             }
 
+             */
+
     }
 
     @Override
@@ -417,9 +431,9 @@ public class Main extends Application implements ChatCallbackAdapter {
 
     @Override
     public void onConnect() {
-        chat.join(nickname);
+        chat.join(nickname, room);
         Platform.runLater(() -> {
-            messagePanel.add(new Message("Server","Connected: You joined as "+nickname));
+            messagePanel.add(new Message("Server","Connected: You joined "+room +" as "+nickname));
         });
     }
 

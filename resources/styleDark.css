@@ -50,3 +50,14 @@
 .tool-mine{
     -fx-background-color: linear-gradient(from 0% 0% to 60% 0%,#252525, #434343);
 }
+
+.pending-usr-box:hover{
+    -fx-background-color: #474642;
+}
+
+#usr-list-container{
+    -fx-background-color: #3F3F3F;
+}
+.pending-usr-box{
+    -fx-background-color: transparent;
+}

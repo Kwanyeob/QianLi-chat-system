@@ -135,3 +135,45 @@
     -fx-border-radius: 10px 10px 0px 0px;
     -fx-background-radius: 10px 10px 0px 0px;
 }
+
+#usr-list-container{
+    -fx-alignment: CENTER;
+}
+
+.pending-usr-box{
+    -fx-alignment: CENTER;
+    -fx-padding: 30px;
+}
+.pending-usr-box:hover{
+    -fx-pref-height: 90%;
+    -fx-background-color: #F8F8F8;
+    -fx-background-radius: 30px;
+    -fx-cursor: hand;
+}
+
+.usrPan{
+    -fx-cursor: hand;
+}
+
+.usr-timestamp{
+    -fx-text-fill: #6f6f6f;
+    -fx-font-size: 12px;
+}
+
+.user-name{
+    -fx-font-family: "DengXian Light";
+    -fx-font-size: 18px;
+}
+
+
+#usr-title-label {
+    -fx-text-fill: white;
+    -fx-text-alignment: center;
+    -fx-alignment: CENTER_LEFT;
+    -fx-font-size: 20px;
+    -fx-font-family: "DengXian";
+}
+#usr-title-container{
+    -fx-background-color: #0D67D6;
+    -fx-alignment: CENTER;
+}

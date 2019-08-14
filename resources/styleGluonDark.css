@@ -70,3 +70,14 @@
 .text-field{
     -fx-border-color: #FF397F;
 }
+
+#usr-list-container{
+    -fx-background-color: #3F3F3F;
+}
+.pending-usr-box{
+    -fx-background-color: transparent;
+}
+
+.pending-usr-box:hover{
+    -fx-background-color: #474642;
+}

@@ -2,15 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3fafb71c-2668-4a46-b971-69106efa6933" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/sample/SettableBoolean.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFX UI/sample/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFX UI/sample/Main$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFX UI/sample/Main$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFX UI/sample/Main$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JFX UI/sample/Main$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFX UI/sample/Main$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFX UI/chat/Chat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFX UI/chat/Chat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFX UI/sample/Main$4$1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFX UI/sample/Main$4$1$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFX UI/sample/Main$4$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JFX UI/sample/Main$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFX UI/sample/Main$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JFX UI/sample/Main$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFX UI/sample/Main$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFX UI/sample/Main$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFX UI/sample/Main$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFX UI/sample/Main$7.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JFX UI/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFX UI/sample/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFX UI/sample/MainScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFX UI/sample/MainScene.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JFX UI/sample/UsrPan.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JFX UI/sample/UsrPan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/MessagePanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/styleDark.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/styleDark.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/styleGluonDark.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/styleGluonDark.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/styleMintDark.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/styleMintDark.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/styleRoseDark.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/styleRoseDark.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/chat/Chat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Notifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Notifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/MainScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MainScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/UsrPan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/UsrPan.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,47 +34,110 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Notifier.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="57" column="35" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
+            <state relative-caret-position="140">
+              <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1621#1622#0" expanded="true" />
+                <element signature="e#9297#9298#0" expanded="true" />
+                <element signature="e#15936#15937#0" expanded="true" />
+                <element signature="e#16068#16069#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/MainScene.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-465">
+              <caret line="34" column="59" selection-start-line="34" selection-start-column="59" selection-end-line="34" selection-end-column="59" />
+              <folding>
+                <element signature="e#1334#1342#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/chat/Chat.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="364">
+              <caret line="41" column="32" lean-forward="true" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/chat/ChatCallbackAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="56">
+              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/CustomerChoicePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="341" column="78" selection-start-line="341" selection-start-column="78" selection-end-line="341" selection-end-column="78" />
+            <state relative-caret-position="95">
+              <caret line="32" column="39" lean-forward="true" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#14034#14035#0" expanded="true" />
-                <element signature="e#14094#14095#0" expanded="true" />
-                <element signature="e#14362#14363#0" expanded="true" />
-                <element signature="e#14452#14453#0" expanded="true" />
-                <element signature="e#15497#15498#0" expanded="true" />
-                <element signature="e#15629#15630#0" expanded="true" />
+                <element signature="e#598#599#0" expanded="true" />
+                <element signature="e#632#633#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/module-info.java">
+        <entry file="file://$PROJECT_DIR$/resources/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+            <state relative-caret-position="270">
+              <caret line="146" selection-start-line="146" selection-end-line="151" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/styleDark.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="361">
+              <caret line="54" column="33" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/styleGluonDark.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="473">
+              <caret line="82" column="1" selection-start-line="82" selection-start-column="1" selection-end-line="82" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/styleMintDark.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="389">
+              <caret line="78" selection-start-line="78" selection-end-line="81" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/styleRoseDark.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="417">
+              <caret line="77" column="1" lean-forward="true" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -78,6 +155,10 @@
     <findStrings>
       <find>Notific</find>
       <find>stop</find>
+      <find>items</find>
+      <find>MainScene</find>
+      <find>join</find>
+      <find>usr-list-container</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -89,13 +170,29 @@
         <option value="$PROJECT_DIR$/src/sample/TrayNotification.java" />
         <option value="$PROJECT_DIR$/src/module-info.java" />
         <option value="$PROJECT_DIR$/src/sample/Notifier.java" />
+        <option value="$PROJECT_DIR$/src/sample/pendingUsers.java" />
+        <option value="$PROJECT_DIR$/src/sample/PendingUsers.java" />
+        <option value="$PROJECT_DIR$/resources/usrlist.fxml" />
+        <option value="$PROJECT_DIR$/resources/fxml/usrlist.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/settings.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/usrlist.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/SettableBoolean.java" />
+        <option value="$PROJECT_DIR$/src/sample/UsrPan.java" />
+        <option value="$PROJECT_DIR$/resources/style.css" />
+        <option value="$PROJECT_DIR$/src/sample/MainScene.java" />
+        <option value="$PROJECT_DIR$/src/chat/Chat.java" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
+        <option value="$PROJECT_DIR$/resources/styleDark.css" />
+        <option value="$PROJECT_DIR$/resources/styleMintDark.css" />
+        <option value="$PROJECT_DIR$/resources/styleGluonDark.css" />
+        <option value="$PROJECT_DIR$/resources/styleRoseDark.css" />
+        <option value="$PROJECT_DIR$/src/sample/CustomerChoicePanel.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2272" />
-    <option name="y" value="-9" />
+    <option name="x" value="2271" />
+    <option name="y" value="-10" />
     <option name="width" value="1940" />
     <option name="height" value="1060" />
   </component>
@@ -104,7 +201,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -120,7 +217,19 @@
             <path>
               <item name="QianLi-Chat-client" type="b2602c69:ProjectViewProjectNode" />
               <item name="QianLi-Chat-client" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="icons" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="QianLi-Chat-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="QianLi-Chat-client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="QianLi-Chat-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="QianLi-Chat-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="chat" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="QianLi-Chat-client" type="b2602c69:ProjectViewProjectNode" />
@@ -136,7 +245,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -146,9 +255,24 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/sample" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15136719" />
     <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\win\Documents\SIMON\QianLi Chat client Project\QianLi-Chat-client\src\sample" />
+      <recent name="C:\Users\win\Documents\SIMON\QianLi Chat client Project\QianLi-Chat-client\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="sample" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\win\Documents\SIMON\QianLi Chat client Project\QianLi-Chat-client\src\sample" />
+      <recent name="C:\Users\win\Documents\SIMON\QianLi Chat client Project\QianLi-Chat-client\resources\fxml" />
+      <recent name="C:\Users\win\Documents\SIMON\QianLi Chat client Project\QianLi-Chat-client\resources" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -163,7 +287,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+    <configuration name="Launch" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="sample.Main" />
       <module name="JFX UI" />
       <method v="2">
@@ -181,18 +305,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1565658264885</updated>
-      <workItem from="1565658271237" duration="9798000" />
+      <workItem from="1565658271237" duration="18166000" />
+      <workItem from="1565743736603" duration="11177000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9798000" />
+    <option name="totallyTimeSpent" value="29343000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1913" y="-7" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24161074" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24496645" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -238,16 +363,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Notifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
+        <state relative-caret-position="798">
           <caret line="57" column="35" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -256,18 +374,147 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/PendingUsers.java" />
+    <entry file="file://$PROJECT_DIR$/resources/usrlist.fxml" />
+    <entry file="file://$PROJECT_DIR$/src/module-info.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/settings.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="21" column="103" selection-start-line="21" selection-start-column="66" selection-end-line="21" selection-end-column="103" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/usrlist.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="80" column="88" selection-start-line="80" selection-start-column="88" selection-end-line="80" selection-end-column="88" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/styleGluonLight.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/ParamPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="36" column="54" selection-start-line="36" selection-start-column="54" selection-end-line="36" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/SettableBoolean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+          <folding>
+            <element signature="e#133#134#0" expanded="true" />
+            <element signature="e#176#177#0" expanded="true" />
+            <element signature="e#210#211#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/UsrPan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/ChatCallback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/MainScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-465">
+          <caret line="34" column="59" selection-start-line="34" selection-start-column="59" selection-end-line="34" selection-end-column="59" />
+          <folding>
+            <element signature="e#1334#1342#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="341" column="78" selection-start-line="341" selection-start-column="78" selection-end-line="341" selection-end-column="78" />
+        <state relative-caret-position="140">
+          <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#14034#14035#0" expanded="true" />
-            <element signature="e#14094#14095#0" expanded="true" />
-            <element signature="e#14362#14363#0" expanded="true" />
-            <element signature="e#14452#14453#0" expanded="true" />
-            <element signature="e#15497#15498#0" expanded="true" />
-            <element signature="e#15629#15630#0" expanded="true" />
+            <element signature="e#9297#9298#0" expanded="true" />
+            <element signature="e#15936#15937#0" expanded="true" />
+            <element signature="e#16068#16069#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="146" selection-start-line="146" selection-end-line="151" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/styleDark.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="54" column="33" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/styleMintDark.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="78" selection-start-line="78" selection-end-line="81" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/styleGluonDark.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="82" column="1" selection-start-line="82" selection-start-column="1" selection-end-line="82" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/styleRoseDark.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="77" column="1" lean-forward="true" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/ChatCallbackAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/Chat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="41" column="32" lean-forward="true" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/CustomerChoicePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="32" column="39" lean-forward="true" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#598#599#0" expanded="true" />
+            <element signature="e#632#633#0" expanded="true" />
           </folding>
         </state>
       </provider>

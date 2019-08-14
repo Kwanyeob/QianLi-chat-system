@@ -33,11 +33,12 @@ public class Chat extends Thread {
         }
     }
     
-    public void join(String nickname) {
+    public void join(String nickname, String room) {
         try {
             JSONObject json = new JSONObject();
             json.putOpt("nickname", nickname);
             socket.emit("nickname", callback, json);
+            socket.emit("room",room);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

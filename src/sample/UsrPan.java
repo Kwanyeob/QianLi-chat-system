@@ -15,6 +15,7 @@ public class UsrPan extends GridPane {
 
     public UsrPan(String username) {
         super();
+        this.getStyleClass().add("usrPan");
         this.username = username;
 
         Circle icon = new Circle();
