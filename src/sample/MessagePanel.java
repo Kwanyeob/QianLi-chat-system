@@ -134,6 +134,11 @@ public class MessagePanel extends ScrollPane{
 
     }
 
+    public void clear(){
+        messages.clear();
+        viewport.getChildren().clear();
+    }
+
     public Button getTrslt() {
         return trslt;
     }

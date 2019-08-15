@@ -31,8 +31,9 @@ public class MainScene {
     private MessagePanel msg;
     private HBox hbox;
     private ObservableList<UsrPan> items;
+    private CustomerChoicePanel custPan;
 
-    public MainScene(TextBox textbox, MessagePanel msgPanel) {
+    public MainScene(TextBox textbox, MessagePanel msgPanel, Chat chat) {
         border = new BorderPane();
         //CenterPane = MessagesPanel
         BorderPane centerPane = new BorderPane();
@@ -70,13 +71,22 @@ public class MainScene {
                 for (int i = 1; i < items.size() ; i++) {
                     UsrPan pan = items.get(i);
                     pan.setOnMouseClicked(e ->{
-                        border.setCenter(centerPane);
+                        String username = pan.getUsername();
+                        String roomname = username.substring(username.indexOf("#")+1);
+                        if(roomname != null) {
+                            System.out.println("Joining " + roomname);
+                            chat.changeRoom(roomname);
+                            msgPanel.clear();
+                            border.setCenter(centerPane);
+                        }
                     });
                 }
             }
         });
 
-        BorderPane userPane = new CustomerChoicePanel(items).getBorderPane();
+        custPan = new CustomerChoicePanel(items);
+
+        BorderPane userPane = custPan.getBorderPane();
 
         seeCustom.setOnMouseClicked(e ->{
             border.setCenter(userPane);
@@ -101,5 +111,9 @@ public class MainScene {
 
     public ObservableList<UsrPan> getUsrItems(){
         return items;
+    }
+
+    public CustomerChoicePanel getCustPan() {
+        return custPan;
     }
 }

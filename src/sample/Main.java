@@ -29,6 +29,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.net.MalformedURLException;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.prefs.Preferences;
 
 import static javafx.util.Duration.seconds;
@@ -38,7 +40,7 @@ public class Main extends Application implements ChatCallbackAdapter {
     MessagePanel messagePanel;
     MainScene ms;
     String nickname = "Dev1";
-    String room = "2";
+    String room = "lobby";
     private int theme = 0;
     Preferences Prefs;
     static final String PREFS_PATH = "qianli/chat-client/prefs";
@@ -57,6 +59,7 @@ public class Main extends Application implements ChatCallbackAdapter {
 
 
     public void init() throws Exception {
+        chat = new Chat(this);
         Prefs = Preferences.userRoot().node(PREFS_PATH);
 
         //Notifications.create().title("Error").text("Failed to capture the Screen!").showError();
@@ -95,7 +98,7 @@ public class Main extends Application implements ChatCallbackAdapter {
         txtbox.getSend().setOnAction(sendAction);
         txtbox.getType().setOnAction(sendAction);
 
-        ms = new MainScene(txtbox, messagePanel);
+        ms = new MainScene(txtbox, messagePanel, chat);
         return new Scene(ms.getBorder(),800,600);
     }
 
@@ -256,15 +259,7 @@ public class Main extends Application implements ChatCallbackAdapter {
 
         primary = primaryStage;
 
-        //startChat();
-        ms.getUsrItems().addListener(new ListChangeListener<UsrPan>() {
-            @Override
-            public void onChanged(Change<? extends UsrPan> change) {
-                if(chat == null){
-                    startChat();
-                }
-            }
-        });
+        startChat();
     }
 
     @Override
@@ -294,7 +289,6 @@ public class Main extends Application implements ChatCallbackAdapter {
 
     public void startChat() {
         messagePanel.add(new Message("Server","Connecting..."));
-        chat = new Chat(this);
         chat.start();
     }
 
@@ -307,70 +301,71 @@ public class Main extends Application implements ChatCallbackAdapter {
     @Override
     public void on(String event, JSONObject obj) {
             if (event.equals("user message")) {
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            String msg = obj.getString("message");
-                            if(msg != null) {
-                                //Display the message
-                                messagePanel.add(new Message(obj.getString("user"), msg));
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    String msg = obj.getString("message");
+                                    if (msg != null) {
+                                        //Display the message
+                                        System.out.println();
+                                        messagePanel.add(new Message("", msg));
 
-                                //Notify the user
-                                if(minimized==true || focused == false) {
-                                    String notifyText = "";
-                                    int limit = 16;
-                                    if (msg.length() > limit) {
-                                        notifyText = msg.substring(0, limit) + "...";
-                                    } else {
-                                        notifyText = msg;
-                                    }
-                                    Translator t = new Translator();
-                                    String lang = Prefs.get(LANG_SELECTED, LANG_DEFAULT);
-                                    String title = t.translate("en", lang, "New message");
-                                    if (title == null) title = "New message";
-                                    if (SystemTray.isSupported()) {
-                                        notifier.display("QianLi : " + title, notifyText);
-                                        notifier.getTrayIcon().addActionListener(new ActionListener() {
-                                            @Override
-                                            public void actionPerformed(java.awt.event.ActionEvent e) {
-                                                if(focused == false) {
-                                                    Platform.runLater(new Runnable() {
-                                                        @Override
-                                                        public void run() {
-                                                            //javaFX operations should go here
-                                                            primary.toFront();
-                                                            focused = true;
-                                                        }
-                                                    });
-                                                }
-                                                if(minimized == true){
-                                                    Platform.runLater(new Runnable() {
-                                                        @Override
-                                                        public void run() {
-                                                            //javaFX operations should go here
-                                                            primary.setIconified(false);
-                                                            minimized = false;
-                                                        }
-                                                    });
-                                                }
+                                        //Notify the user
+                                        if (minimized == true || focused == false) {
+                                            String notifyText = "";
+                                            int limit = 16;
+                                            if (msg.length() > limit) {
+                                                notifyText = msg.substring(0, limit) + "...";
+                                            } else {
+                                                notifyText = msg;
                                             }
-                                        });
-                                    } else {
-                                        System.err.println("System tray not supported!");
-                                    }
+                                            Translator t = new Translator();
+                                            String lang = Prefs.get(LANG_SELECTED, LANG_DEFAULT);
+                                            String title = t.translate("en", lang, "New message");
+                                            if (title == null) title = "New message";
+                                            if (SystemTray.isSupported()) {
+                                                notifier.display("QianLi : " + title, notifyText);
+                                                notifier.getTrayIcon().addActionListener(new ActionListener() {
+                                                    @Override
+                                                    public void actionPerformed(java.awt.event.ActionEvent e) {
+                                                        if (focused == false) {
+                                                            Platform.runLater(new Runnable() {
+                                                                @Override
+                                                                public void run() {
+                                                                    //javaFX operations should go here
+                                                                    primary.toFront();
+                                                                    focused = true;
+                                                                }
+                                                            });
+                                                        }
+                                                        if (minimized == true) {
+                                                            Platform.runLater(new Runnable() {
+                                                                @Override
+                                                                public void run() {
+                                                                    //javaFX operations should go here
+                                                                    primary.setIconified(false);
+                                                                    minimized = false;
+                                                                }
+                                                            });
+                                                        }
+                                                    }
+                                                });
+                                            } else {
+                                                System.err.println("System tray not supported!");
+                                            }
 
-                                    //Auto translation
-                                    if (Prefs.getBoolean(AUTO_TRANSLATE, false) == true) {
-                                        messagePanel.getTrslt().fire();
+                                            //Auto translation
+                                            if (Prefs.getBoolean(AUTO_TRANSLATE, false) == true) {
+                                                messagePanel.getTrslt().fire();
+                                            }
+                                        }
                                     }
+                                } catch (JSONException ex) {
+                                    ex.printStackTrace();
                                 }
                             }
-                        } catch (JSONException ex) {
-                            ex.printStackTrace();
-                        }
-                    }
-                });
+                        });
             }
             else if (event.equals("announcement")) {
 
@@ -384,6 +379,44 @@ public class Main extends Application implements ChatCallbackAdapter {
                         }
                     }
                 });
+            }
+
+            else if (event.equals("rooms")) {
+                JSONArray names = obj.names();
+                for (int i=1; i < names.length(); i++) {
+                    try {
+                        String name = names.getString(i);
+                        if(name.length() >= 1) {
+                            String room_name = name.substring(1);
+                            ArrayList<Customer> list = ms.getCustPan().getCustomers();
+
+                            //We check if the customer is not already there
+                            boolean notthere = true;
+                            System.out.println(list.size());
+                            for (int j = 0; j < list.size(); j++) {
+                                if(list.get(j).name.equals(room_name)){
+                                    notthere = false;
+                                }
+                            }
+                            if(notthere) {
+                                Customer current = new Customer(room_name, new Date());
+                                list.add(current);
+                                System.out.println("Added someone");
+                                Platform.runLater(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        //Do a loop with the available users:
+                                        ms.getCustPan().getContainer().getChildren().add(current.getDisplayBox(ms.getUsrItems()));
+                                    }
+                                });
+                            }
+                        }
+                    } catch (JSONException ex) {
+                        ex.printStackTrace();
+                    }
+
+                }
+
             }
 
             // Online users display list : Used as a label
@@ -435,6 +468,7 @@ public class Main extends Application implements ChatCallbackAdapter {
         Platform.runLater(() -> {
             messagePanel.add(new Message("Server","Connected: You joined "+room +" as "+nickname));
         });
+
     }
 
     @Override

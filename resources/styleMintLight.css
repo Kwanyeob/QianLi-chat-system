@@ -51,11 +51,11 @@
 }
 
 .msg-toolbar{
-    -fx-background-color: linear-gradient(from 0% 0% to 60% 0%, #434343,#252525);
+    -fx-background-color: linear-gradient(from 0% 0% to 60% 0%, #EDEDED,white);
 }
 
 .tool-mine{
-    -fx-background-color: linear-gradient(from 0% 0% to 60% 0%,#252525, #434343);
+    -fx-background-color: linear-gradient(from 0% 0% to 60% 0%, white,#EDEDED);
 }
 
 .root {

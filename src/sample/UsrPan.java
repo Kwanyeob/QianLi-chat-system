@@ -49,4 +49,8 @@ public class UsrPan extends GridPane {
 
         return lg1;
     }
+
+    public String getUsername() {
+        return username;
+    }
 }
