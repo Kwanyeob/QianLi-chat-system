@@ -75,7 +75,6 @@ public class Main extends Application implements ChatCallbackAdapter {
     }
 
     private Scene createContent(){
-        messagePanel = new MessagePanel();
 
         txtbox = new TextBox("Type your message...");
 
@@ -87,6 +86,7 @@ public class Main extends Application implements ChatCallbackAdapter {
 
                     String content = txtbox.getType().getCharacters().toString();
                     //Message boxes append
+                    messagePanel = ms.getMsg();
                     messagePanel.add(new Message("myself", content));
 
                     try {
@@ -94,6 +94,7 @@ public class Main extends Application implements ChatCallbackAdapter {
                         chat.sendMessage(content);
                     } catch (Exception e) {
                         e.printStackTrace();
+                        messagePanel = ms.getMsg();
                         messagePanel.add(new Message("Server", "Sending failed"));
                     }
 
@@ -106,7 +107,8 @@ public class Main extends Application implements ChatCallbackAdapter {
         txtbox.getSend().setOnAction(sendAction);
         txtbox.getType().setOnAction(sendAction);
 
-        ms = new MainScene(txtbox, messagePanel, chat);
+        ms = new MainScene(txtbox, chat);
+        messagePanel = ms.getMsg();
         return new Scene(ms.getBorder(),800,600);
     }
 
@@ -298,6 +300,7 @@ public class Main extends Application implements ChatCallbackAdapter {
 
 
     public void startChat() {
+        messagePanel = ms.getMsg();
         messagePanel.add(new Message("Server","Connecting..."));
         chat.start();
     }
@@ -322,6 +325,7 @@ public class Main extends Application implements ChatCallbackAdapter {
                                     String msg = obj.getString("message");
                                     if (msg != null) {
                                         //Display the message
+                                        messagePanel = ms.getMsg();
                                         messagePanel.add(new Message(obj.getString("user"), msg));
 
                                         if (Prefs.getBoolean(NOTIFY,true)) {
@@ -471,6 +475,7 @@ public class Main extends Application implements ChatCallbackAdapter {
     @Override
     public void onMessage(String message) {
         Platform.runLater(() -> {
+            messagePanel = ms.getMsg();
             messagePanel.add(new Message("Server",message));
         });
     }
@@ -478,6 +483,7 @@ public class Main extends Application implements ChatCallbackAdapter {
     @Override
     public void onMessage(JSONObject json) {
         Platform.runLater(() -> {
+            messagePanel = ms.getMsg();
             messagePanel.add(new Message("Server",json.toString()));
         });
     }
@@ -486,6 +492,7 @@ public class Main extends Application implements ChatCallbackAdapter {
     public void onConnect() {
         chat.join(nickname, room);
         Platform.runLater(() -> {
+            messagePanel = ms.getMsg();
             messagePanel.add(new Message("Server","Connected: You joined "+room +" as "+nickname));
         });
 
@@ -493,11 +500,13 @@ public class Main extends Application implements ChatCallbackAdapter {
 
     @Override
     public void onDisconnect() {
+        messagePanel = ms.getMsg();
         messagePanel.add(new Message("Server","Error: Disconnected."));
     }
 
     @Override
     public void onConnectFailure() {
+        messagePanel = ms.getMsg();
         messagePanel.add(new Message("Server","Error: Connect failure"));
     }
 }

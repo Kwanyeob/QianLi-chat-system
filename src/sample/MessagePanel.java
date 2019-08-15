@@ -22,11 +22,12 @@ import java.util.List;
 import java.util.prefs.Preferences;
 
 public class MessagePanel extends ScrollPane{
+    private int id;
     private Button trslt;
     private ArrayList<Message> messages;
     private VBox viewport;
 
-    public MessagePanel() {
+    public MessagePanel(int id) {
         this.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         this.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
 
@@ -43,6 +44,7 @@ public class MessagePanel extends ScrollPane{
         this.setContent(viewport);
         viewport.setSpacing(10);
         this.vvalueProperty().bind(viewport.heightProperty());
+        this.id = id;
     }
 
     public void add(Message m){
@@ -141,5 +143,9 @@ public class MessagePanel extends ScrollPane{
 
     public Button getTrslt() {
         return trslt;
+    }
+
+    public int getNumericID() {
+        return id;
     }
 }

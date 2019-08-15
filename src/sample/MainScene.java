@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import static javafx.application.Application.*;
@@ -33,7 +34,11 @@ public class MainScene {
     private ObservableList<UsrPan> items;
     private CustomerChoicePanel custPan;
 
-    public MainScene(TextBox textbox, MessagePanel msgPanel, Chat chat) {
+    private ArrayList<MessagePanel> messagePanels;
+    private int selectedPanel = 0;
+
+
+    public MainScene(TextBox textbox, Chat chat) {
         border = new BorderPane();
         //CenterPane = MessagesPanel
         BorderPane centerPane = new BorderPane();
@@ -44,9 +49,11 @@ public class MainScene {
         centerPane.setBottom(textBox.addTextBox());
 
         //Messages pane
-        msg = msgPanel;
+        messagePanels = new ArrayList<MessagePanel>();
+        msg = new MessagePanel(0);
+        messagePanels.add(msg);
 
-        centerPane.setCenter(msg);
+        centerPane.setCenter(messagePanels.get(selectedPanel));
 
         ListView<UsrPan> list = new ListView<UsrPan>();
         items = FXCollections.observableArrayList ();
@@ -76,7 +83,42 @@ public class MainScene {
                         if(roomname != null) {
                             System.out.println("Joining " + roomname);
                             chat.changeRoom(roomname);
-                            msgPanel.clear();
+
+                            boolean exists = false;
+                            int numP = 0;
+                            for (int j = 0; j < messagePanels.size(); j++) {
+                                if (messagePanels.get(j).getNumericID() == Integer.valueOf(roomname)){
+                                    exists = true;
+                                    numP = j;
+                                }
+                            }
+
+                            if (exists)
+                            {
+                                MessagePanel mp =messagePanels.get(numP);
+                                if(mp == null){
+                                    System.out.println("NO PANEL FOUND");
+                                }
+                                else {
+                                    System.out.println("Joined panel "+ numP);
+                                    setMsg(mp);
+                                    centerPane.setCenter(mp);
+                                    System.out.println(getMsg().getNumericID());
+                                }
+                            }
+                            else
+                            {
+                                System.out.println("New panel");
+                                selectedPanel= Integer.valueOf(roomname);
+                                System.out.println("selectedPanel :"+ selectedPanel);
+
+                                MessagePanel mp = new MessagePanel(selectedPanel);
+                                messagePanels.add(mp);
+                                mp.add(new Message("test","TEST#"+roomname));
+
+                                centerPane.setCenter(mp);
+                            }
+
                             border.setCenter(centerPane);
                         }
                     });
@@ -115,5 +157,21 @@ public class MainScene {
 
     public CustomerChoicePanel getCustPan() {
         return custPan;
+    }
+
+    public int getMsgIndexOf(int id){
+        for (int i = 0; i < messagePanels.size(); i++) {
+            if (messagePanels.get(i).getNumericID() == id)
+                return i;
+        }
+        return 0;
+    }
+
+    public MessagePanel getMsg() {
+        return messagePanels.get(getMsgIndexOf(selectedPanel));
+    }
+
+    public void setMsg(MessagePanel msg) {
+        this.msg = msg;
     }
 }

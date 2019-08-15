@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3fafb71c-2668-4a46-b971-69106efa6933" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/ParamPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ParamPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/MainScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MainScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/MessagePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MessagePanel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,40 +22,47 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="377" column="41" selection-start-line="377" selection-start-column="41" selection-end-line="377" selection-end-column="41" />
+            <state relative-caret-position="-1928">
+              <caret line="327" column="67" selection-start-line="327" selection-start-column="67" selection-end-line="327" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#createContent#0;class#Main#0" />
-                <element signature="e#9311#9312#0" expanded="true" />
-                <element signature="e#18900#18901#0" expanded="true" />
-                <element signature="e#19032#19033#0" expanded="true" />
+                <element signature="e#9390#9391#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/ParamPanel.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/MessagePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="55" column="66" lean-forward="true" selection-start-line="55" selection-start-column="66" selection-end-line="55" selection-end-column="66" />
+            <state relative-caret-position="601">
+              <caret line="78" column="41" lean-forward="true" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
               <folding>
-                <element signature="e#2350#2351#0" expanded="true" />
-                <element signature="e#2378#2379#0" expanded="true" />
-                <element signature="e#2403#2404#0" expanded="true" />
-                <element signature="e#2431#2432#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#2663#4310#0" />
+                <element signature="e#5129#5130#0" expanded="true" />
+                <element signature="e#5154#5155#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/sample/settings.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
+        <entry file="file://$PROJECT_DIR$/src/sample/MainScene.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="33" column="55" lean-forward="true" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
+            <state relative-caret-position="220">
+              <caret line="170" column="60" selection-start-line="170" selection-start-column="60" selection-end-line="170" selection-end-column="60" />
+              <folding>
+                <element signature="e#5077#5078#0" expanded="true" />
+                <element signature="e#5142#5143#0" expanded="true" />
+                <element signature="e#4929#4930#0" expanded="true" />
+                <element signature="e#4972#4973#0" expanded="true" />
+                <element signature="e#5022#5023#0" expanded="true" />
+                <element signature="e#5050#5051#0" expanded="true" />
+                <element signature="e#5388#5389#0" expanded="true" />
+                <element signature="e#5709#5710#0" expanded="true" />
+                <element signature="e#5783#5784#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -77,7 +85,6 @@
       <find>join</find>
       <find>usr-list-container</find>
       <find>on(&quot;</find>
-      <find>on</find>
       <find>1</find>
       <find>conn</find>
       <find>event</find>
@@ -89,6 +96,11 @@
       <find>theme</find>
       <find>LANG_DEFAULT</find>
       <find>System.out.pr</find>
+      <find>clear</find>
+      <find>MessagePanel</find>
+      <find>new MessagePanel</find>
+      <find>messagePanel</find>
+      <find>on</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -115,18 +127,18 @@
         <option value="$PROJECT_DIR$/src/sample/CustomerChoicePanel.java" />
         <option value="$PROJECT_DIR$/src/sample/Customer.java" />
         <option value="$PROJECT_DIR$/src/sample/UsrPan.java" />
-        <option value="$PROJECT_DIR$/src/sample/MainScene.java" />
-        <option value="$PROJECT_DIR$/src/sample/MessagePanel.java" />
         <option value="$PROJECT_DIR$/resources/styleRoseLight.css" />
         <option value="$PROJECT_DIR$/resources/styleMintLight.css" />
         <option value="$PROJECT_DIR$/src/chat/Chat.java" />
         <option value="$PROJECT_DIR$/src/sample/ParamPanel.java" />
-        <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/settings.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/MessagePanel.java" />
+        <option value="$PROJECT_DIR$/src/sample/Main.java" />
+        <option value="$PROJECT_DIR$/src/sample/MainScene.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-12" />
     <option name="width" value="1940" />
     <option name="height" value="1060" />
@@ -235,12 +247,12 @@
       <workItem from="1565743736603" duration="11964000" />
       <workItem from="1565761290864" duration="8713000" />
       <workItem from="1565830054949" duration="10758000" />
-      <workItem from="1565845892018" duration="4860000" />
+      <workItem from="1565845892018" duration="10877000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54461000" />
+    <option name="totallyTimeSpent" value="60478000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
@@ -255,7 +267,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32960895" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1829609" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.22625698" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39944133" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -263,7 +275,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32960895" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32960895" />
+      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.32960895" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -430,45 +442,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/MessagePanel.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/settings.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1470">
-          <caret line="138" column="39" selection-start-line="138" selection-start-column="39" selection-end-line="138" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2663#4310#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/MainScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="77" column="50" selection-start-line="77" selection-start-column="50" selection-end-line="77" selection-end-column="50" />
-          <folding>
-            <element signature="e#3169#3170#0" expanded="true" />
-            <element signature="e#3198#3199#0" expanded="true" />
-            <element signature="e#3233#3234#0" expanded="true" />
-            <element signature="e#3263#3264#0" expanded="true" />
-            <element signature="e#3311#3312#0" expanded="true" />
-            <element signature="e#3354#3355#0" expanded="true" />
-            <element signature="e#3479#3480#0" expanded="true" />
-            <element signature="e#3509#3510#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="377" column="41" selection-start-line="377" selection-start-column="41" selection-end-line="377" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#createContent#0;class#Main#0" />
-            <element signature="e#9311#9312#0" expanded="true" />
-            <element signature="e#18900#18901#0" expanded="true" />
-            <element signature="e#19032#19033#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="406">
+          <caret line="33" column="55" lean-forward="true" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -485,11 +463,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/settings.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
+    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="33" column="55" lean-forward="true" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
+        <state relative-caret-position="-1928">
+          <caret line="327" column="67" selection-start-line="327" selection-start-column="67" selection-end-line="327" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#9390#9391#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/MessagePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="601">
+          <caret line="78" column="41" lean-forward="true" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2663#4310#0" />
+            <element signature="e#5129#5130#0" expanded="true" />
+            <element signature="e#5154#5155#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/MainScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="170" column="60" selection-start-line="170" selection-start-column="60" selection-end-line="170" selection-end-column="60" />
+          <folding>
+            <element signature="e#5077#5078#0" expanded="true" />
+            <element signature="e#5142#5143#0" expanded="true" />
+            <element signature="e#4929#4930#0" expanded="true" />
+            <element signature="e#4972#4973#0" expanded="true" />
+            <element signature="e#5022#5023#0" expanded="true" />
+            <element signature="e#5050#5051#0" expanded="true" />
+            <element signature="e#5388#5389#0" expanded="true" />
+            <element signature="e#5709#5710#0" expanded="true" />
+            <element signature="e#5783#5784#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
