@@ -67,5 +67,7 @@ public class Chat extends Thread {
     }
 
 
-
+    public String getRoom() {
+        return m_room;
+    }
 }

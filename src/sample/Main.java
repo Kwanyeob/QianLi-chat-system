@@ -47,6 +47,8 @@ public class Main extends Application implements ChatCallbackAdapter {
     static final String AUTO_TRANSLATE = "auto-translate";
     static final String LANG_SELECTED = "lang";
     static final String LANG_DEFAULT = "en";
+    static final String NOTIFY = "notify";
+    static final String PREFERED_THEME = "theme";
 
     private boolean minimized = false;
     private boolean focused = true;
@@ -61,6 +63,11 @@ public class Main extends Application implements ChatCallbackAdapter {
     public void init() throws Exception {
         chat = new Chat(this);
         Prefs = Preferences.userRoot().node(PREFS_PATH);
+
+        theme = Prefs.getInt(PREFERED_THEME,0)-1;
+        if(theme<0) theme = 0;
+        System.out.println("Existing theme :"+theme);
+
 
         //Notifications.create().title("Error").text("Failed to capture the Screen!").showError();
         notifier = new Notifier("resources/icon.png");
@@ -137,7 +144,7 @@ public class Main extends Application implements ChatCallbackAdapter {
                 else {
                     theme = 0;
                 }
-                System.out.println(theme);
+
 
             }
 
@@ -160,10 +167,8 @@ public class Main extends Application implements ChatCallbackAdapter {
 
         String generic = "resources/style.css";
 
-        applyTheme(scene, baseLight, generic, "resources/styleLight.css" );
-
         HBox buttonContainerTop = new HBox();
-        Button themeBtn = new Button("Light on ");
+        Button themeBtn = new Button("");
 
         //Styling event on button press
         themeBtn.setOnAction(e -> {
@@ -211,6 +216,8 @@ public class Main extends Application implements ChatCallbackAdapter {
             }
         });
         //END OF GUI STYLING
+
+        themeBtn.fire();
 
         buttonContainerTop.setSpacing(5);
         buttonContainerTop.setId("top-btn-container");
@@ -269,7 +276,9 @@ public class Main extends Application implements ChatCallbackAdapter {
             chat.leave();
         }
         notifier.delete();
+        Prefs.putInt(PREFERED_THEME, theme);
         super.stop();
+        System.exit(0);
     }
 
     public static void main(String[] args) {
@@ -301,6 +310,10 @@ public class Main extends Application implements ChatCallbackAdapter {
     @Override
     public void on(String event, JSONObject obj) {
             if (event.equals("user message")) {
+                try {
+                    System.out.println("Entering user : "+obj.getString("user"));
+                    System.out.println("Room in : "+chat.getRoom());
+                    if(obj.getString("user").equals(chat.getRoom())) {
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
@@ -308,8 +321,7 @@ public class Main extends Application implements ChatCallbackAdapter {
                                     String msg = obj.getString("message");
                                     if (msg != null) {
                                         //Display the message
-                                        System.out.println();
-                                        messagePanel.add(new Message("", msg));
+                                        messagePanel.add(new Message(obj.getString("user"), msg));
 
                                         //Notify the user
                                         if (minimized == true || focused == false) {
@@ -366,6 +378,10 @@ public class Main extends Application implements ChatCallbackAdapter {
                                 }
                             }
                         });
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
             else if (event.equals("announcement")) {
 
