@@ -66,6 +66,7 @@ public class Main extends Application implements ChatCallbackAdapter {
 
         theme = Prefs.getInt(PREFERED_THEME,0)-1;
         if(theme<0) theme = 0;
+
         System.out.println("Existing theme :"+theme);
 
 
@@ -323,53 +324,56 @@ public class Main extends Application implements ChatCallbackAdapter {
                                         //Display the message
                                         messagePanel.add(new Message(obj.getString("user"), msg));
 
-                                        //Notify the user
-                                        if (minimized == true || focused == false) {
-                                            String notifyText = "";
-                                            int limit = 16;
-                                            if (msg.length() > limit) {
-                                                notifyText = msg.substring(0, limit) + "...";
-                                            } else {
-                                                notifyText = msg;
-                                            }
-                                            Translator t = new Translator();
-                                            String lang = Prefs.get(LANG_SELECTED, LANG_DEFAULT);
-                                            String title = t.translate("en", lang, "New message");
-                                            if (title == null) title = "New message";
-                                            if (SystemTray.isSupported()) {
-                                                notifier.display("QianLi : " + title, notifyText);
-                                                notifier.getTrayIcon().addActionListener(new ActionListener() {
-                                                    @Override
-                                                    public void actionPerformed(java.awt.event.ActionEvent e) {
-                                                        if (focused == false) {
-                                                            Platform.runLater(new Runnable() {
-                                                                @Override
-                                                                public void run() {
-                                                                    //javaFX operations should go here
-                                                                    primary.toFront();
-                                                                    focused = true;
-                                                                }
-                                                            });
+                                        if (Prefs.getBoolean(NOTIFY,true)) {
+                                            //Notify the user
+                                            if (minimized == true || focused == false) {
+                                                String notifyText = "";
+                                                int limit = 16;
+                                                if (msg.length() > limit) {
+                                                    notifyText = msg.substring(0, limit) + "...";
+                                                } else {
+                                                    notifyText = msg;
+                                                }
+                                                Translator t = new Translator();
+                                                String lang = Prefs.get(LANG_SELECTED, LANG_DEFAULT);
+                                                String title = t.translate("en", lang, "New message");
+                                                if (title == null) title = "New message";
+                                                if (SystemTray.isSupported()) {
+                                                    notifier.display("QianLi : " + title, notifyText);
+                                                    notifier.getTrayIcon().addActionListener(new ActionListener() {
+                                                        @Override
+                                                        public void actionPerformed(java.awt.event.ActionEvent e) {
+                                                            if (focused == false) {
+                                                                Platform.runLater(new Runnable() {
+                                                                    @Override
+                                                                    public void run() {
+                                                                        //javaFX operations should go here
+                                                                        primary.toFront();
+                                                                        focused = true;
+                                                                    }
+                                                                });
+                                                            }
+                                                            if (minimized == true) {
+                                                                Platform.runLater(new Runnable() {
+                                                                    @Override
+                                                                    public void run() {
+                                                                        //javaFX operations should go here
+                                                                        primary.setIconified(false);
+                                                                        minimized = false;
+                                                                    }
+                                                                });
+                                                            }
                                                         }
-                                                        if (minimized == true) {
-                                                            Platform.runLater(new Runnable() {
-                                                                @Override
-                                                                public void run() {
-                                                                    //javaFX operations should go here
-                                                                    primary.setIconified(false);
-                                                                    minimized = false;
-                                                                }
-                                                            });
-                                                        }
-                                                    }
-                                                });
-                                            } else {
-                                                System.err.println("System tray not supported!");
-                                            }
+                                                    });
+                                                } else {
+                                                    System.err.println("System tray not supported!");
+                                                }
 
-                                            //Auto translation
-                                            if (Prefs.getBoolean(AUTO_TRANSLATE, false) == true) {
-                                                messagePanel.getTrslt().fire();
+
+                                                //Auto translation
+                                                if (Prefs.getBoolean(AUTO_TRANSLATE, false) == true) {
+                                                    messagePanel.getTrslt().fire();
+                                                }
                                             }
                                         }
                                     }

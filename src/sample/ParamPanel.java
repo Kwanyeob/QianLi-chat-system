@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.prefs.Preferences;
 
+import static sample.Main.NOTIFY;
+
 public class ParamPanel{
     static final String PREFS_PATH = "qianli/chat-client/prefs";
     static final String AUTO_TRANSLATE = "auto-translate";
@@ -27,7 +29,7 @@ public class ParamPanel{
     static final String LANG_DEFAULT = "en";
 
     Scene scene;
-    Preferences myLangPref;
+    Preferences Prefs;
     FXMLLoader fxmlLoader;
 
     Stage stage;
@@ -42,18 +44,35 @@ public class ParamPanel{
             stage.setScene(scene);
 
 
-            myLangPref = Preferences.userRoot().node(PREFS_PATH);
+            Prefs = Preferences.userRoot().node(PREFS_PATH);
 
+            /* --- Settings tab --- */
+            CheckBox notify = (CheckBox) scene.lookup("#allow_notifications");
+            if(notify != null){
+                //set box selected depending on the preferences
+                notify.setSelected(Prefs.getBoolean(NOTIFY,true));
+                //Assign action on selection change
+                notify.setOnAction(e ->{
+                    Prefs.putBoolean(NOTIFY, notify.isSelected());
+                    System.out.println("Notifications set to "+ Prefs.getBoolean(NOTIFY,true));
+                });
+            }
+            else {
+                System.out.println("Checkbox not found");
+            }
+
+
+            /* --- Language tab --- */
             setupLang(lang);
-            //Get checkbox from fxml file
+            //Get LANG checkbox from fxml file
             CheckBox checkAutolang = (CheckBox) scene.lookup("#auto_translate_check");
             if(checkAutolang != null){
                 //set box selected depending on the preferences
-                checkAutolang.setSelected(myLangPref.getBoolean(AUTO_TRANSLATE,false));
+                checkAutolang.setSelected(Prefs.getBoolean(AUTO_TRANSLATE,false));
                 //Assign action on selection change
                 checkAutolang.setOnAction(e ->{
-                    myLangPref.putBoolean(AUTO_TRANSLATE, checkAutolang.isSelected());
-                    System.out.println("Auto translation set to "+ myLangPref.getBoolean(AUTO_TRANSLATE,false));
+                    Prefs.putBoolean(AUTO_TRANSLATE, checkAutolang.isSelected());
+                    System.out.println("Auto translation set to "+ Prefs.getBoolean(AUTO_TRANSLATE,false));
                 });
             }
             else {
@@ -130,7 +149,7 @@ public class ParamPanel{
             int id_chosen = language_selector.getSelectionModel().getSelectedIndex();
             String chosen = langcodes[id_chosen];
 
-            myLangPref.put(LANG_SELECTED, chosen);
+            Prefs.put(LANG_SELECTED, chosen);
             System.out.println("Preferred language set to "+chosen);
         });
     }
