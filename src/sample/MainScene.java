@@ -80,43 +80,37 @@ public class MainScene {
                     pan.setOnMouseClicked(e ->{
                         String username = pan.getUsername();
                         String roomname = username.substring(username.indexOf("#")+1);
+
+                        //At this point we have the room number
                         if(roomname != null) {
-                            System.out.println("Joining " + roomname);
+                            //Switch room
                             chat.changeRoom(roomname);
 
-                            boolean exists = false;
-                            int numP = 0;
-                            for (int j = 0; j < messagePanels.size(); j++) {
-                                if (messagePanels.get(j).getNumericID() == Integer.valueOf(roomname)){
-                                    exists = true;
-                                    numP = j;
-                                }
+                            //Switch panel
+                            //First we try to know if the panel exists
+                            boolean exists = panelExists(roomname);
+                            System.out.println("exists = "+exists);
+
+                            //If it does we switch
+                            if (exists == true){
+                                //get panel index from its id
+                                int pan_id = getPanelIdFromName(roomname);
+                                //set our selection on this id
+                                selectedPanel = pan_id;
+                                //switch panels
+                                centerPane.setCenter(messagePanels.get(selectedPanel));
                             }
-
-                            if (exists)
-                            {
-                                MessagePanel mp =messagePanels.get(numP);
-                                if(mp == null){
-                                    System.out.println("NO PANEL FOUND");
-                                }
-                                else {
-                                    System.out.println("Joined panel "+ numP);
-                                    setMsg(mp);
-                                    centerPane.setCenter(mp);
-                                    System.out.println(getMsg().getNumericID());
-                                }
-                            }
-                            else
-                            {
-                                System.out.println("New panel");
-                                selectedPanel= Integer.valueOf(roomname);
-                                System.out.println("selectedPanel :"+ selectedPanel);
-
-                                MessagePanel mp = new MessagePanel(selectedPanel);
-                                messagePanels.add(mp);
-                                mp.add(new Message("test","TEST#"+roomname));
-
-                                centerPane.setCenter(mp);
+                            //If it does not we create it
+                            else {
+                                //Instanciate new panel
+                                MessagePanel nouveau = new MessagePanel(Integer.valueOf(roomname));
+                                //Add panel to our panel array
+                                messagePanels.add(nouveau);  //Increment the panel number
+                                //Set selected panel to this increment
+                                selectedPanel++;
+                                System.out.println("Selected panel now = "+selectedPanel);
+                                //Replace the old panel with the new one
+                                centerPane.setCenter(messagePanels.get(selectedPanel));
                             }
 
                             border.setCenter(centerPane);
@@ -139,6 +133,32 @@ public class MainScene {
 
     }
 
+    private boolean panelExists(String name){
+        boolean ok = false;
+        int nameId = Integer.valueOf(name);
+        for (int i = 0; i < messagePanels.size() ; i++) {
+            MessagePanel cur = messagePanels.get(i);
+            if(cur.getNumericID() == nameId){
+                ok = true;
+                break;
+            }
+        }
+        return ok;
+    }
+
+    private int getPanelIdFromName(String name){
+        int id = -1;
+        int nameId = Integer.valueOf(name);
+        for (int i = 0; i < messagePanels.size() ; i++) {
+            MessagePanel cur = messagePanels.get(i);
+            if(cur.getNumericID() == nameId){
+                id = i;
+                break;
+            }
+        }
+        return id;
+    }
+
     public BorderPane getBorder() {
         return border;
     }
@@ -158,17 +178,8 @@ public class MainScene {
     public CustomerChoicePanel getCustPan() {
         return custPan;
     }
-
-    public int getMsgIndexOf(int id){
-        for (int i = 0; i < messagePanels.size(); i++) {
-            if (messagePanels.get(i).getNumericID() == id)
-                return i;
-        }
-        return 0;
-    }
-
     public MessagePanel getMsg() {
-        return messagePanels.get(getMsgIndexOf(selectedPanel));
+        return messagePanels.get(selectedPanel);
     }
 
     public void setMsg(MessagePanel msg) {
