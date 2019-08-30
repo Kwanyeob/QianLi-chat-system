@@ -64,4 +64,16 @@ public class CustomerChoicePanel{
     public HBox getContainer() {
         return container;
     }
+
+    public void remove(int index){
+        int indexlonglong = index;
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                //Do a loop with the available users:
+                container.getChildren().remove(indexlonglong);
+            }
+        });
+
+    }
 }

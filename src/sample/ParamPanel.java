@@ -100,7 +100,7 @@ public class ParamPanel{
         ArrayList<String> choices = new ArrayList<String>();
         choices.add("English");     // English:                 en          0
         choices.add("简体中文");    // Simple chinese :          zh-CN       1
-        choices.add("中國傳統的");   //Traditional chinese :     zh-TW       2
+        choices.add("繁體中文");   //Traditional chinese :     zh-TW       2
         choices.add("Français");    //French :                  fr          3
         choices.add("Deutsch");     //German :                  de          4
         choices.add("Italiano");    //Italian :                 it          5

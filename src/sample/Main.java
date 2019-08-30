@@ -404,7 +404,8 @@ public class Main extends Application implements ChatCallbackAdapter {
                     }
                 });
             }
-
+            else if (event.equals("room-number")) {
+            }
             else if (event.equals("rooms")) {
                 JSONArray names = obj.names();
                 for (int i=1; i < names.length(); i++) {
@@ -443,32 +444,36 @@ public class Main extends Application implements ChatCallbackAdapter {
 
             }
 
-            // Online users display list : Used as a label
-            /*
+            // Here we check with the nicknames
             else if (event.equals("nicknames")) {
                 JSONArray names = obj.names();
-                ObservableList<UsrPan> list = ms.getUsrItems();
-                Platform.runLater(new Runnable() {
-                    public void run() {
-                        list.clear();
-                    }
-                });
-                for (int i=0; i < names.length(); i++) {
-                    try {
-                        String name = names.getString(i);
-                        Platform.runLater(new Runnable() {
-                            public void run() {
-                                list.add(new UsrPan(name));
-                            }
-                        });
-                    } catch (JSONException ex) {
-                        ex.printStackTrace();
-                    }
+                ArrayList<Customer> list = ms.getCustPan().getCustomers();
+                System.out.println("List size = "+list.size());
+                System.out.println("Number of nicknames = "+ names.length());
+                if(names.length() < list.size()){
+                    for (int i = 0; i < list.size(); i++) {
+                        String cust = list.get(i).name;
+                        boolean there = false;
+                        for (int j = 0; j < names.length(); j++) {
+                            try {
+                                String id = names.getString(j);
+                                if(id.equals(cust)){
+                                    there = true;
+                                }
 
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        if(!there){
+                            list.remove(i);
+                            chat.changeRoom("lobby");
+                            System.out.println("Removed user");
+                            ms.getCustPan().remove(i);
+                        }
+                    }
                 }
             }
-
-             */
 
     }
 
